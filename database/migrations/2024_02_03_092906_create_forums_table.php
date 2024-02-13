@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateForumsTable extends Migration
+{
+
+    public function up()
+    {
+        /**
+         * Run the migrations.
+         *
+         * @return void
+         */
+        Schema::create('forums', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('tag_id')->nullable()->constrained()->onDelete('cascade');
+            $table->text('title');
+            $table->text('description');
+            $table->text('image')->nullable();
+            $table->integer('views')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('forums');
+    }
+}
