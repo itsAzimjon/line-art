@@ -78,16 +78,49 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        $tags = Tag::all();
+    
+        return view('product.edit', compact('product', 'categories', 'tags'));
     }
 
     public function update(Request $request, Product $product)
     {
-        //
+        $mults = [];
+
+        if ($request->hasFile('mult_image')) {
+            foreach ($request->file('mult_image') as $image) {
+                $mult = $image->store('post-mult-image');
+                $mults[] = $mult;
+            }
+        }
+
+        $file = $request->hasFile('file') ? $request->file('file')->store('model') : null;
+
+        $product->update([
+            'role_model' => $request->role_model,
+            'category_id' => $request->category_id,
+            'photo' => !empty($mults) ? json_encode($mults) : $product->photo,
+            'file' => $file ?? $product->file,
+            'title' => $request->title,
+            'price' => $request->price,
+            'description' => $request->description,
+            'doc_number' => $request->doc_number,
+        ]);
+
+        if ($request->has('tags')) {
+            $product->tags()->sync($request->tags);
+        } else {
+            $product->tags()->detach();
+        }
+
+        return redirect()->route('product.show', ['product' => $product->id])->with('success', 'Product updated successfully.');
     }
+
 
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('home');
     }
 }

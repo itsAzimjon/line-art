@@ -36,7 +36,8 @@ nav .logo{
     display: flex;
 }
 nav .logo h1 {
-    font-size: 18px;
+    margin-top: 1px;
+    font-size: 22px;
     line-height: 50px;
 }
 nav .logo img {
@@ -473,7 +474,6 @@ nav .registr li .user_img{
 }
 .comment{
     /* margin-bottom: 300px; */
-    height: 500px;
     overflow: auto;
 }
 .comment_user_img{
@@ -631,7 +631,6 @@ nav .registr li .user_img{
 .btn{
     font-size: 10px;
     margin: 10px 5px;
-    background: #F4F6F8;
 }
 .btn:hover{
 }

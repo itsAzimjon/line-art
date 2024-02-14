@@ -2,6 +2,16 @@
 @section('content')
 <div class="row page3_cards">
     <div class="user_page_left col-4">
+        @can('admin')
+            <div class="d-flex">
+                <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-outline-warning">Изменит</a>
+                <form action="{{ route('product.destroy', ['product' => $product->id])}}" method="POST">
+                @method('DELETE')
+                @csrf
+                    <button class="btn btn-outline-danger" type="submit">Удалить</button>
+                </form>
+            </div>
+        @endcan
         <div class="user_title mt-5 pt-5">
             <h1>{{ $product->title }}</h1>
             @if ( $product->price == 0 || $product->price == null )
@@ -199,9 +209,13 @@
             <form action="{{ route('comment.store') }}" method="post">
                 @csrf
                 <div class="row">
-                    <div class="col-1">
-                        <img class="comment_user_img" src="{{ asset('storage/' . auth()->user()->photo ) }}">
-                    </div>
+                    @if (auth()->check() && auth()->user()->photo)
+                        <div class="col-1">
+                            <div class="col-1">
+                                <img class="comment_user_img" src="{{ asset('storage/' . auth()->user()->photo ) }}">
+                            </div>
+                        </div>
+                    @endif
                     <input type="hidden" name="product" value="{{ $product->id }}">
                     <div class="col-8">
                         <div class="form-floating">
@@ -220,7 +234,11 @@
         @foreach ($product->comments as $c)
             <div class="row">
                 <div class="col-12 comment_user">
-                    <img class="comment_user_img cui" src="{{ asset('storage/' . $c->user->photo ) }}" alt="">
+                    @if (auth()->check() && auth()->user()->photo)
+                        <div class="col-1">
+                            <img class="comment_user_img cui" src="{{ asset('storage/' . $c->user->photo ) }}" alt="">
+                        </div>
+                    @endif
                     <p class="comment_user_name">{{ $c->user->name }}</p>
                     <p class="comment_user_time">{{ $c->created_at->locale('ru')->diffForHumans() }}</p>
                 </div>

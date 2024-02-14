@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h1 class="h1 mt-5">Choose the plan that fits for your team</h1>
+<h2 class="text-center mt-5">Choose the plan that fits for your team</h1>
 <p class="p">
     Deploy your sites to global infrastructure in seconds. No credit card
     required

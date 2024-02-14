@@ -38,19 +38,19 @@
                         @csrf
                             @if (Auth::check() && count(auth()->user()->forumlikes)>0 )
                                 <input type="hidden" name="forum_id" value="{{ $forum->id}}">
-                                <button class="btn card_top_btn">
+                                <button class="btn card_top_btn bg-light text-secondary border">
                                     <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.5 13.9557V4.03906" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M3.125 8.9974L7.5 4.03906L11.875 8.9974" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.5 13.9557V4.03906" stroke="gray" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.125 8.9974L7.5 4.03906L11.875 8.9974" stroke="gray" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>                                
                                     Голосовать
                                 </button>
                             @else
                                 <input type="hidden" name="forum_id" value="{{ $forum->id}}">
-                                <button type="submit" class="btn card_top_btn bg-light text-secondary border">
+                                <button type="submit" class="btn card_top_btn">
                                     <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.5 13.9557V4.03906" stroke="gray" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M3.125 8.9974L7.5 4.03906L11.875 8.9974" stroke="gray" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7.5 13.9557V4.03906" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3.125 8.9974L7.5 4.03906L11.875 8.9974" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>                                
                                     Голосовать
                                 </button>

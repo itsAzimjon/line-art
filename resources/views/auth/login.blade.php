@@ -8,10 +8,12 @@
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
     
-    <div id="container" class="container">
+    <div id="container" class="p-0 m-0 main container-fluid">
         <!-- FORM SECTION -->
         <div class="row">
             <!-- SIGN UP -->
@@ -20,84 +22,96 @@
                     <div class="form sign-up">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
-                            <div class="input-group">
-                                <label for="name">Username:</label>
-                                <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Enter your username">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Имя пользователя:</span>
+                                <input class="form-control form-control-sm" type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Введите имя пользователя">
                             </div>
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                
-                            <div class="input-group">
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your email">
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon2">Электронная почта:</span>
+                                <input class="form-control form-control-sm" type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Введите адрес электронной почты">
                             </div>
                             @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                
-                            <div class="input-group">
-                                <label for="age">Age:</label>
-                                <input type="number" id="age" name="age" value="{{ old('age') }}" placeholder="Enter your age">
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon3">Возраст:</span>
+                                <input class="form-control form-control-sm" type="number" id="age" name="age" value="{{ old('age') }}" placeholder="Введите свой возраст">
                             </div>
                             @error('age')
                                 <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                
-                            <div class="input-group" style="display: flex">
-                                <label for="gender">Gender:</label>
-                                <input type="radio" id="gender1" name="gender" value="1" {{ old('gender') == '1' ? 'checked' : '' }}>
-                                <label for="gender1">Male</label>
-                                <input type="radio" id="gender2" name="gender" value="2" {{ old('gender') == '2' ? 'checked' : '' }}>
-                                <label for="gender2">Female</label>
-                            </div>
-                            @error('gender')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                
-                            <div class="input-group">
-                                <label for="region">Region:</label>
-                                <input type="text" id="region" name="region" value="{{ old('region') }}" placeholder="Enter your region">
+                            @enderror                         
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon5">Область:</span>
+                                <input class="form-control form-control-sm" type="text" id="region" name="region" value="{{ old('region') }}" placeholder="Введите свой регион">
                             </div>
                             @error('region')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                
-                            <div class="input-group">
-                                <label for="job">Job:</label>
-                                <input type="text" id="job" name="job" value="{{ old('job') }}" placeholder="Enter your job">
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon6">Работа:</span>
+                                <input class="form-control form-control-sm" type="text" id="job" name="job" value="{{ old('job') }}" placeholder="Введите свою работу">
                             </div>
                             @error('job')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                
-                            <div class="input-group">
-                                <label for="phone">Phone:</label>
-                                <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Enter your phone number">
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon7">Опыт:</span>
+                                <input class="form-control form-control-sm" type="text" id="experience" name="experience" value="{{ old('experience') }}" placeholder="Введите свой опыт">
                             </div>
-                        @error('phone')
+                            @error('experience')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
-                
-                            <div class="input-group">
-                                <label for="password">Password:</label>
-                                <input type="password" id="password" name="password" placeholder="Enter your password">
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon8">Номер телефона:</span>
+                                <input class="form-control form-control-sm" type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Введите свой номер телефона">
+                            </div>
+                            @error('phone')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon9">Пароль:</span>
+                                <input class="form-control form-control-sm" type="password" id="password" name="password" placeholder="Введите ваш пароль">
                             </div>
                             @error('password')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
+
+                            <div class="input-group mb-3 d-flex">
+                                <span class="input-group-text" id="basic-addon4">Пол:</span>
+                                <div class="form-check form-check-inline mx-5 m-2">
+                                    <input class="form-check-input" type="radio" id="gender1" name="gender" value="1" {{ old('gender') == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="gender1">Мужской</label>
+                                </div>
+                                <div class="form-check form-check-inline m-2">
+                                    <input class="form-check-input" type="radio" id="gender2" name="gender" value="2" {{ old('gender') == '2' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="gender2">Женский</label>
+                                </div>
+                            </div>
+                            @error('gender')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror   
             
                             
-                            <button type="submit">
-                                Sign up
+                            <button type="submit" class="btn-sm">
+                                Зарегистрироваться
                             </button>
                         </form>
                         <p>
                             <span>
-                                Already have an account?
+                                У вас уже есть аккаунт?
                             </span>
                             <b onclick="toggle()" class="pointer">
-                                Sign in here
+                                <h6>Войти здесь</h4>
                             </b>
                         </p>
                     </div>
@@ -111,29 +125,27 @@
                     <div class="form sign-in">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <div class="input-group">
-                                <i class='bx bxs-user'></i>
-                                <input type="text" name="email" placeholder="Username">
+                            <div class="input-group mt-3">
+                                <input class="form-control" type="text" name="email" placeholder="Username">
                             </div>
-                            <div class="input-group">
-                                <i class='bx bxs-lock-alt'></i>
-                                <input type="password" name="password" placeholder="Password">
+                            <div class="input-group my-2">
+                                <input class="form-control" type="password" name="password" placeholder="Password">
                             </div>
-                            <button type="submit">
-                                Sign in
+                            <button class="mt-3" type="submit">
+                                Войти
                             </button>
                         </form>
-                        <p>
+                        {{-- <p>
                             <b>
                                 Forgot password?
                             </b>
-                        </p>
+                        </p> --}}
                         <p>
                             <span>
-                                Don't have an account?
+                                У вас нет учетной записи?                            
                             </span>
                             <b onclick="toggle()" class="pointer">
-                                Sign up here
+                                Подпишите здесь
                             </b>
                         </p>
                     </div>
