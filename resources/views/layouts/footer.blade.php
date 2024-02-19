@@ -9,10 +9,17 @@
             </div>
         </div>
         <div class="col columns col-3">
-            <p class="col-md-3 text-body-secondary pt">Форум Библиотека Статьи</p>
+            <ul class="col-md-3 text-body-secondary footer_ul">
+                <li class="nav-item">Форум</li>
+                <li class="nav-item">Библиотека</li> 
+                <li class="nav-item">Статьи</li>
+            </ul>
         </div>
         <div class="col columns col-3">
-            <p class="col-md-3 text-body-secondary pt">Свяжитесь с нами О проекте</p>
+            <ul class="text-body-secondary footer_ul">
+                <li class="nav-item">Свяжитесь с нами</li>
+                <li class="nav-item">О проекте</li> 
+            </ul>
         </div>
         <div class="col columns col-3">
             <ul class="footer_ul d-flex justify-content-end">

@@ -1,4 +1,4 @@
-<nav class="mt-2">
+<nav class="mt-2 ml-0">
     <div class="logo">
         <a class="d-flex text-dark" href="{{ route('home')}}">
             <svg class="mt-3 m-1" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,17 +28,23 @@
                     price
                 </a>
             </li>
-            </ul>
-        <form action="#">
-
+        </ul>
+        <form  action="{{ route('filter') }}" method="GET">
             <div class="search">
-                <input type="text" placeholder="Поиск..." style="font-style: italic;">
-                <button class="search_icons material-symbols-outlined bg-none">search</button>
+                <input type="text" name="query" placeholder="Поиск..." style="font-style: italic;">
+                <button type="submit" class="search_icons material-symbols-outlined bg-none" aria-label="Search">search</button>
             </div>
-        </form>
+        </form>            
     </div>
+    <form action="{{ route('forum.create')}}">
+    @csrf
+        <button class="fw-semibold btn-on btn ml-4">Вопрос</button>
+    </form>
     <div>
         <ul class="registr">
+            <li>
+              
+            </li>
             <li><a href="{{ route('downloads')}}"><span class="material-symbols-outlined">download</span></a></li>
             <li><a href="#"><span class="material-symbols-outlined">notifications</span></a></li>
             @if (auth()->check() && auth()->user()->photo)
@@ -52,11 +58,12 @@
                 @endif
             @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
+                    <a id="navbarDropdown" class="nav-link dropown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <span class="material-symbols-outlined">account_circle</span>
                     </a>
 
                     <div class="mt-3 dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <p class="dropdown-item">{{ Auth::user()->name }}</p>
                         <p class="dropdown-item">Кредит: {{auth()->user()->credit}}</p>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();

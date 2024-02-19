@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Download;
 use App\Models\Product;
+use App\Models\Save;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,8 +49,14 @@ class DownloadController extends Controller
 
     public function index()
     {
-        $downloads = Download::where('user_id', auth()->user()->id)->get();
+        $user = Auth::user();
 
-        return view('downloads', compact('downloads'));
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $downloads = Download::where('user_id', auth()->user()->id)->get();
+        $saves = Save::where('user_id', auth()->user()->id)->get();
+        return view('downloads', compact(['downloads', 'saves']));
     }
 }

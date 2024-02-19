@@ -6,14 +6,16 @@
                     <img class="comment_user_img cls_page3" src="{{ asset('storage/' . auth()->user()->photo)}}">
                 </div>
             @endif
-            <div class="col-8 cls_p3_input">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Поиск по форумам">
+            <form class="d-flex" action="{{ route('filter') }}" method="GET">
+                <div class="col-8 cls_p3_input">
+                    <div class="input-group">
+                        <input name="forum" type="text" class="form-control" placeholder="Поиск по форумам">
+                    </div>
                 </div>
-            </div>
-            <div class="col">
-                <button class="btn border btn_sent cls3">Найти</button>
-            </div>
+                <div class="col">
+                    <button type="submit" class="btn border btn_sent cls3">Найти</button>
+                </div>
+            </form>
         </div>    
     </div>
 </div>

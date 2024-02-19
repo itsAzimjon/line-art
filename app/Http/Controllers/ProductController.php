@@ -60,6 +60,12 @@ class ProductController extends Controller
     
     public function show(Product $product)
     {
+        $views = $product->views;
+        $views++;
+        $product->update([
+            'view' => $views
+        ]);
+
         $products = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->take(3)->get();
         return view('product.show', compact(['product', 'products']));
     }

@@ -30,10 +30,38 @@
                 </svg>
                 Области проектирования
             </a>
+            @can('admin')
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    @foreach ($categories as $category)
+                    <li class="d-flex">
+                        <p data-tag-id="{{ $category->id }}">{{ $category->name }}</p>
+                        <form action="{{ route('category.destroy', ['category' => $category->id])}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                                <button class="btn btn-sm btn-outline-danger" type="submit">Удалить</button>
+                        </form>                    
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
                 
+            @endcan
             <ul class="dropdown-menu" id="tagMenu">
                 @foreach ($tags as $tag)
-                    <li><a class="dropdown-item" data-tag-id="{{ $tag->id }}">{{ $tag->name }}</a></li>
+                    <li class="d-flex">
+                        <a class="dropdown-item" data-tag-id="{{ $tag->id }}">{{ $tag->name }}</a>
+                        @can('admin')
+                            <form action="{{ route('tag.destroy', ['tag' => $tag->id])}}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                                <button class="btn btn-sm btn-outline-danger" type="submit">Удалить</button>
+                            </form>                    
+                        @endcan
+                    </li>
                 @endforeach
             </ul>
         </div>
@@ -41,7 +69,7 @@
            
         
         <ul class="ul_kniga">
-            <li><a href="">Исследовать</a></li>
+            {{-- <li><a href="">Исследовать</a></li> --}}
             <li><a href="{{ route('filter', ['role_model' => '1']) }}">Книги</a></li>
             <li><a href="{{ route('filter', ['role_model' => '2']) }}">Чертежи</a></li>
             <li><a href="{{ route('filter', ['role_model' => '3']) }}">Курсы</a></li>
@@ -52,9 +80,10 @@
         <div class="dropdown">
             <a class="btn_toogle_left dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><b>Сортировать</b> Популярные</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="{{ route('filter', ['sort_by' => 'popular']) }}">Популярные</a></li>
+                <li><a class="dropdown-item" href="{{ route('filter', ['sort_by' => 'highest_rated']) }}">С высшими оценками</a></li>
+                <li><a class="dropdown-item" href="{{ route('filter', ['sort_by' => 'most_downloaded']) }}">Самые скачиваемые</a></li>
+                <li><a class="dropdown-item" href="{{ route('filter', ['sort_by' => 'newest']) }}">Новые</a></li>
             </ul>
         </div>
         
@@ -67,7 +96,6 @@
             $(document).ready(function () {
                 $('#tagMenu a').on('click', function () {
                     $('#selectedTagId').val($(this).data('tag-id'));
-                    
                     $('#filterForm').submit();
                 });
             });

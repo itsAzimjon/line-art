@@ -292,13 +292,20 @@ nav .registr li .user_img{
     height: 100px;
     margin-bottom: 20px;
 }
+
+main{
+    min-height: 77vh;
+}
+
 .footer .logo_footer img{
     width: 30px;
     height: 30px;
 }
+
 .logo_footer h1{
     font-size: 22px !important;
 }
+
 .footer_ul{
     list-style: none;
 }
@@ -385,6 +392,10 @@ nav .registr li .user_img{
 .btn_skachat:hover{
     background-color: #ba5a00 !important;
     color: #fff !important;
+}
+
+.tab-pane{
+    border: none !important;
 }
 
 .img_row_left, .img_row_right{

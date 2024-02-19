@@ -126,7 +126,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="input-group mt-3">
-                                <input class="form-control" type="text" name="email" placeholder="Username">
+                                <input class="form-control" type="text" name="email" placeholder="Email">
                             </div>
                             <div class="input-group my-2">
                                 <input class="form-control" type="password" name="password" placeholder="Password">
