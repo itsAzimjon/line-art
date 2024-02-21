@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->string('price')->nullable();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->integer('downloads')->default(0);
             $table->integer('view')->default(0);
             $table->string('doc_number')->nullable();
             $table->timestamps();

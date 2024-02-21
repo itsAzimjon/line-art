@@ -214,12 +214,25 @@ nav .registr li .user_img{
     font-weight: 400;
     cursor: pointer;
 }
+
 .ul_kniga li a{
     color: #9196A8;
-    font-size: 14px !important; 
+    font-size: 14px ; 
     text-decoration: none;
     padding-bottom: 5px;
 }
+
+.ul_filter li a{
+    font-size: 18px !important; 
+}
+
+.ul_kniga li h4{
+    color: #9196A8;
+    font-size: 18px !important; 
+    text-decoration: none;
+    padding-bottom: 5px;
+}
+
 .ul_kniga li a:focus,.ul_kniga li a:hover{
     color: #000;
     border-bottom: 2px solid #f576006d;  
@@ -453,6 +466,11 @@ main{
     margin: 8px 6px;
     border-radius: 12px;
 }
+
+.filter_tag{
+    font-size: 15px !important;
+}
+
 .link_h5{
     margin-top: 40px;
     margin-bottom: 20px;

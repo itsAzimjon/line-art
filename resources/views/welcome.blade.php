@@ -31,29 +31,28 @@
                 Области проектирования
             </a>
             @can('admin')
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown button
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    @foreach ($categories as $category)
-                    <li class="d-flex">
-                        <p data-tag-id="{{ $category->id }}">{{ $category->name }}</p>
-                        <form action="{{ route('category.destroy', ['category' => $category->id])}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                                <button class="btn btn-sm btn-outline-danger" type="submit">Удалить</button>
-                        </form>                    
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-                
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Category
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        @foreach ($categories as $category)
+                        <li class="d-flex">
+                            <p class="p-2" data-cat-id="{{ $category->id }}">{{ $category->name }}</p>
+                            <form action="{{ route('category.destroy', ['category' => $category->id])}}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                    <button class="btn btn-sm btn-outline-danger" type="submit">Удалить</button>
+                            </form>                    
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             @endcan
             <ul class="dropdown-menu" id="tagMenu">
                 @foreach ($tags as $tag)
                     <li class="d-flex">
-                        <a class="dropdown-item" data-tag-id="{{ $tag->id }}">{{ $tag->name }}</a>
+                        <a class="dropdown-item pt-2" data-tag-id="{{ $tag->id }}">{{ $tag->name }}</a>
                         @can('admin')
                             <form action="{{ route('tag.destroy', ['tag' => $tag->id])}}" method="POST">
                             @method('DELETE')
@@ -65,8 +64,6 @@
                 @endforeach
             </ul>
         </div>
-        
-           
         
         <ul class="ul_kniga">
             {{-- <li><a href="">Исследовать</a></li> --}}
@@ -102,7 +99,7 @@
         </script>
     </nav>
     @can('admin')    
-        <a href="{{ route('product.create')}}" class="btn btn-on mb-2">
+        <a href="{{ route('product.create')}}" class="btn btn-on mb-2 mt-4">
             + Add Product
         </a>
     @endcan

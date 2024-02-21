@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FilterController extends Controller
 {
@@ -15,6 +16,8 @@ class FilterController extends Controller
         $roleModel = $request->input('role_model');
         $sortBy = $request->input('sort_by', 'popular');
         $query = $request->input('query');
+        $role = $request->input('role_id');
+        $p = $request->input('popular');
 
         $filteredProducts = Product::when($tagId, function ($query) use ($tagId) {
             $query->whereHas('tags', function ($tagQuery) use ($tagId) {
@@ -37,10 +40,12 @@ class FilterController extends Controller
             default:
                 $filteredProducts->orderBy('created_at', 'desc');
                 break;
-        }
-        if ($query) {
+        }        
+
+        if ($role) {
             $filteredProducts->where('title', 'like', "%{$query}%")->orWhere('description', 'like', "%{$query}%");
         }
+        
     
         $filteredProducts = $filteredProducts->get();
     

@@ -162,14 +162,16 @@
                                                 <path d="M0.79216 4.1708L4.22974 1.11754C4.53064 0.850254 5.00488 1.06724 5.00488 1.48243V3.09064C8.14216 3.12759 10.6299 3.77433 10.6299 6.83243C10.6299 8.06673 9.85682 9.28952 9.00228 9.92883C8.73562 10.1283 8.35558 9.87794 8.4539 9.55456C9.33952 6.64138 8.03384 5.86798 5.00488 5.82314V7.58929C5.00488 8.00514 4.53028 8.22116 4.22974 7.95419L0.79216 4.90061C0.57594 4.70852 0.57564 4.36317 0.79216 4.1708Z" stroke="#858EAD"/>
                                             </svg> Ответить
                                         </button>
-                                        @if (auth()->check() && auth()->user()->id == $reply->user->id)
-                                        <form id="deleteForm" action="{{ route('reply.destroy', ['reply' => $reply->id ])}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="btn fw-bold btn-sm btn-outline-danger mx-5" onclick="confirmDelete()">
-                                                Удалить
-                                            </button>
-                                        </form>
+                                        @if (auth()->check())
+                                            @if (auth()->user()->id == $reply->user->id || auth()->user()->role_id == 1)
+                                            <form action="{{ route('reply.destroy', ['reply' => $reply->id ])}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn fw-bold btn-sm btn-outline-danger mx-5">
+                                                    Удалить
+                                                </button>
+                                            </form>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>
@@ -218,8 +220,19 @@
                                                     <p>{{ \Carbon\Carbon::parse($r2r->created_at)->locale('ru')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div class="d-flex">
                                                 <p><span class="user_nick"></span>{!!nl2br (__($r2r->comment)) !!}</p>
+                                                @if (auth()->check())
+                                                    @if (auth()->user()->id == $reply->user->id || auth()->user()->role_id == 1)
+                                                        <form action="{{ route('replytoreply.destroy', ['replytoreply' => $r2r->id ])}}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn fw-bold btn-sm btn-outline-danger mx-5">
+                                                                Удалить
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

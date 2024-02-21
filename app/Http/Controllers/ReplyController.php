@@ -86,8 +86,8 @@ class ReplyController extends Controller
      */
     public function destroy(Reply $reply)
     {
-        $forumId = $reply->forum->id;
         $reply->delete();
+        $forumId = $reply->forum->id;
         
         return redirect()->route('forum.show', ['forum' => $forumId]);
     }

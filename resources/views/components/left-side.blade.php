@@ -18,7 +18,7 @@
                         <img style="object-fit:cover" src="{{ asset('storage/' . json_decode($product->photo)[0]) }}">
                     </div>
                     <div class="block_right">
-                        <h6 class="col-10 text-truncate">{{ $product->title}}.</h6>
+                        <h6 class="d-inline-block text-truncate" style="max-width: 120px;">{{ $product->title}}.</h6>
                         <p>{{ $product->raties->count() }} лайк  • {{ $product->category->name}}</p>
                     </div>
                 </div>

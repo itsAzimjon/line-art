@@ -9,12 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
-{
-    public function index()
-    {
-
-    } 
-
+{ 
     public function create()
     {
         $tags = Tag::all();
@@ -59,6 +54,12 @@ class ForumController extends Controller
 
     public function edit(Forum $forum)
     {
+        if (auth()->user()->role_id == 1) {
+            
+        }
+        elseif (Auth::id() !== $forum->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
         $tags = Tag::all();
         return view('forum.edit', compact(['forum', 'tags']));
     }

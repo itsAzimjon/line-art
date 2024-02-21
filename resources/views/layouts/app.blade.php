@@ -42,7 +42,6 @@
                 });
             });
 
-
             function confirmDelete() {
                 if (confirm("Вы уверены, что хотите удалить этот форум?")) {
                     document.getElementById('deleteForm').submit();

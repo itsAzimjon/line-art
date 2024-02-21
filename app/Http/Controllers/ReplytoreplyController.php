@@ -80,6 +80,9 @@ class ReplytoreplyController extends Controller
      */
     public function destroy(Replytoreply $replytoreply)
     {
-        //
+        $replytoreply->delete();
+        $forumId = $replytoreply->reply->forum->id;
+        
+        return redirect()->route('forum.show', ['forum' => $forumId]);
     }
 }
