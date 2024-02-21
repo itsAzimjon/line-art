@@ -50,7 +50,7 @@
                     <form action="{{ route('filter')}}" method="GET">
                         <input type="hidden" name="tag_id" value="{{ $tag->id }}">
                         <input type="hidden" name="role_model" value="{{ $roleModel }}">
-                        <button type="submit" class="btn metka_btn btn-sm filter_tag border">{{ $tag->name }}</button>
+                        <button type="submit" class="btn metka_btn filter_tag border">{{ $tag->name }}</button>
                     </form>
                     @php
                         $encounteredTags[] = $tag->name;

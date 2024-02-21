@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Forum;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -52,6 +53,20 @@ class FilterController extends Controller
         return view('product.filter', compact('filteredProducts', 'tags'));
     }
 
+    public function filterForum(Request $request)
+    {
+        $forumsQuery = Forum::query();
+        $searchTerm = $request->forum;
+
+        if ($searchTerm) {
+            $forumsQuery->where('title', 'like', "%{$searchTerm}%")->orWhere('description', 'like', "%{$searchTerm}%");
+        }
+
+        $filteredForums = $forumsQuery->get();
+
+        return view('forum.filter', compact('filteredForums'));
+
+    }
     
     
 }

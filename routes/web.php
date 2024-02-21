@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/forums', [HomeController::class, 'forum'])->name('forum');
 Route::get('/filter', [FilterController::class, 'filter'])->name('filter');
+Route::get('/filter-forum', [FilterController::class, 'filterForum'])->name('filter.forum');
 Route::get('/search-product', [FilterController::class, 'searchProduct'])->name('search.product');
 
 Route::get('/pricing', [DownloadController::class, 'price'])->name('price');
