@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Tag;
@@ -23,10 +24,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::orderBy('name')->get();
         $products = Product::latest()->get();
         $categories = Category::all();
+        $branches = Branch::all();
 
-        return view('welcome', compact(['tags','categories', 'products']));   
+        return view('welcome', compact(['tags','categories', 'products', 'branches']));   
     }
 }

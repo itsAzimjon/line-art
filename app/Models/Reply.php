@@ -13,6 +13,7 @@ class Reply extends Model
         'user_id',
         'forum_id',
         'comment',
+        'true_answer',
     ];
 
     public function forum(){

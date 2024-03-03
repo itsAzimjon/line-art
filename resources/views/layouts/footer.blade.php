@@ -10,8 +10,8 @@
         </div>
         <div class="col columns col-3">
             <ul class="col-md-3 text-body-secondary footer_ul">
-                <li class="nav-item">Форум</li>
-                <li class="nav-item">Библиотека</li> 
+                <li class="nav-item"><a class="text-dark" href="{{ route('forum') }}">Форум</a></li>
+                <li class="nav-item"> <a class="text-dark" href="{{ route('home') }}">Библиотека</a></li> 
                 <li class="nav-item">Статьи</li>
             </ul>
         </div>

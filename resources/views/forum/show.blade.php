@@ -106,8 +106,24 @@
                         </div>
                     </div>
                 </form>
-                @foreach ($forum->replies as $reply)                    
-                    <div class="row block_coment mt-5 mb-4">
+                @foreach ($forum->replies->sortByDesc('true_answer') as $reply)                    
+                    <div class="row block_coment mt-5 mb-4 {{ $reply->true_answer == 1 ? 'true-reply' : ''}}">
+                        @if ($reply->true_answer == 1)
+                            <span class="material-symbols-outlined checked px-1">
+                                check
+                            </span>
+                        @endif
+                        @if (auth()->check() && auth()->user()->role_id != 4)
+                        <form action="{{ route('check', ['reply' => $reply->id])}}" method="POST">
+                            @method('PUT')
+                            @csrf
+                                <button type="submit">
+                                    <span class="material-symbols-outlined check px-1">
+                                        check
+                                    </span>
+                                </button>
+                            </form>
+                        @endif
                         <div class="col-1 block_coment_left mr-5">
                             <form action="{{ route('replylike.store', ['replyLike' => $reply->id]) }}" method="POST">
                             @csrf
@@ -142,7 +158,7 @@
                                         <h6>Модератор</h6>
                                     </div>
                                     <div class="user_date m-1">
-                                        <p>{{ \Carbon\Carbon::parse($forum->created_at)->locale('ru')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
+                                        <p>{{ \Carbon\Carbon::parse($reply->created_at)->locale('ru')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                                     </div>
                                 </div>
                                 <div>
@@ -184,24 +200,24 @@
                             <div class="collapse" id="collapseExample{{ $reply->id }}">
                                 <form action="{{ route('replytoreply.store')}}" method="POST">
                                     @csrf
-                                        <div class="row cls_comment mt-1">
-                                            <div class="col">
-                                                <div class="row">
-                                                    <div class="col-1">
+                                    <div class="row cls_comment mt-1">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col-1">
+                                                </div>
+                                                <div class="col-8 cls_p3_input">
+                                                    <div class="input-group flex-nowrap">
+                                                        <input type="hidden" name="reply_id" value="{{ $reply->id }}">
+                                                        <textarea required name="comment" class="form-control" placeholder="Написать ответ..." aria-label="Username" aria-describedby="addon-wrapping"></textarea>
                                                     </div>
-                                                    <div class="col-8 cls_p3_input">
-                                                        <div class="input-group flex-nowrap">
-                                                            <input type="hidden" name="reply_id" value="{{ $reply->id }}">
-                                                            <textarea required name="comment" class="form-control" placeholder="Написать ответ..." aria-label="Username" aria-describedby="addon-wrapping"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <button type="submit" class="btn border mx-0 btn_sent cls3">Отвечать</button>
-                                                    </div>
-                                                </div>    
-                                            </div>
+                                                </div>
+                                                <div class="col">
+                                                    <button type="submit" class="btn border mx-0 btn_sent cls3">Отвечать</button>
+                                                </div>
+                                            </div>    
                                         </div>
-                                    </form>
+                                    </div>
+                                </form>
                                 @foreach ($reply->replytoreplies as $r2r)    
                                     <div class="row com_cards_block">
                                         <div class="col-2"></div>

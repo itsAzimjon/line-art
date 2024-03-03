@@ -19,7 +19,7 @@
                     </div>
                     <div class="block_right">
                         <h6 class="d-inline-block text-truncate" style="max-width: 120px;">{{ $product->title}}.</h6>
-                        <p>{{ $product->raties->count() }} лайк  • {{ $product->category->name}}</p>
+                        <p>{{ $product->raties->count() }} лайк  • {{ $product->branch->name}}</p>
                     </div>
                 </div>
             </a>

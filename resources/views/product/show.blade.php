@@ -19,7 +19,7 @@
             @else
             <h4>цена: {{ $product->price }}</h4>
             @endif
-            <p>{{ $product->category->name }}</p>  
+            {{-- <p>{{ $product->category->name }}</p>   --}}
         </div>
         <div class="user_btn d-flex">
             <form action="{{ route('product.buy', ['product' => $product->id]) }}" method="post">
@@ -127,7 +127,7 @@
             <button class="btn metka_btn border">{{ $tag->name }}</button>
         @endforeach
 
-        <h5 class="link_h5">Поделиться</h5>
+        {{-- <h5 class="link_h5">Поделиться</h5>
         <ul>
             <li><a href="#">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -163,7 +163,7 @@
                     <path d="M9 13.5H15" stroke="#6D8493" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a></li>
-        </ul>
+        </ul> --}}
     </div>
 </div>
 

@@ -28,13 +28,10 @@
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Category</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
-                                <select name="role_model" aria-label="Default select example" class="form-select">
-                                    <option value="1">Книги</option>
-                                    <option value="2">Чертежи</option>
-                                    <option value="3">Курсы</option>
-                                    <option value="4">Нормативы</option>
-                                    <option value="5">Расчёты</option>
-                                    <option value="6">Исследовать</option>
+                                <select name="branch_id" aria-label="Default select example" class="form-select">
+                                    @foreach ($branches as $branch)
+                                        <option value="{{ $branch->id}}">{{ $branch->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -50,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
+                    {{-- <div class="col-12">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Category</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
@@ -61,7 +58,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-12">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Tags</label>
@@ -122,7 +119,7 @@
                 <div id="image-forms" class="my-4 form-group"> 
                     <div class="image-form">
                         <label class="form-control-label" for="mult_image[]">Qo‘shimcha surat:</label>
-                        <input class="form-control" type="file" name="mult_image[]" accept="image/*">
+                        <input required class="form-control" type="file" name="mult_image[]" accept="image/*">
                     </div>
                 </div>
                 

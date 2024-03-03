@@ -3,10 +3,9 @@
 <div class="row mt-4">
     <x-left-side/>
     <div class="col col-7 cls_p3">
-        <x-search-forum/>
         <div class="cls_card">
-            @foreach ($categories as $category)
-                <a href="{{ route('category.show', ['category' => $category->id]) }}">
+            @foreach ($branch->categories as $category)
+                <a href="{{ route('product-category.show', ['category' => $category->id, 'branch' => $branch->id]) }}">
                     <div class="cls_cards p-3 mt-2 mb-2">
                         <div class="card_top">
                             <p>
@@ -16,13 +15,14 @@
                                 </svg> {{ $category->tags->count() }} подразделов
                             </p>
                             <p>
-                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M11 8.125C11 8.41232 10.8946 8.68787 10.7071 8.89103C10.5196 9.0942 10.2652 9.20833 10 9.20833H4L2 11.375V2.70833C2 2.42102 2.10536 2.14547 2.29289 1.9423C2.48043 1.73914 2.73478 1.625 3 1.625H10C10.2652 1.625 10.5196 1.73914 10.7071 1.9423C10.8946 2.14547 11 2.42102 11 2.70833V8.125Z" stroke="#858EAD" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>  
+                                <svg width="16" height="16" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.4522 7L10.2452 7.47905C9.91092 8.25243 9.82691 9.10637 10.0043 9.92729C10.275 11.1799 11.3011 12.1473 12.5976 12.3723L12.7117 12.3921C13.1229 12.4635 13.5438 12.4635 13.955 12.3921L14.0691 12.3723C15.3656 12.1473 16.3917 11.1799 16.6624 9.92729C16.8398 9.10637 16.7558 8.25243 16.4215 7.47905L16.2145 7" stroke="#858EAD" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M21.7926 15.143C21.2059 17.6504 19.2004 19.6204 16.6287 20.2251C14.4674 20.7334 12.1998 20.7334 10.0385 20.2251C7.46675 19.6204 5.46125 17.6504 4.87455 15.143C4.35034 12.9026 4.47783 10.5648 5.24276 8.39084L5.3564 8.06787C6.19806 5.67585 8.30063 3.91013 10.858 3.44766L11.5583 3.32102C12.7318 3.10881 13.9354 3.10881 15.1089 3.32102L15.8092 3.44766C18.3666 3.91013 20.4691 5.67586 21.3108 8.06789L21.4244 8.39084C22.1893 10.5648 22.3168 12.9026 21.7926 15.143Z" stroke="#858EAD" stroke-width="1.5"/>
+                                </svg>
                                 @php
                                     $total = 0;
                                     foreach ($category->tags as $tag){
-                                        $total += $tag->forums->count();
+                                        $total += $tag->products->where('branch_id', 'like', $branch->id)->count();
                                     }
                                 @endphp
                                 {{ $total }} тем
@@ -32,24 +32,14 @@
                             <h3 class="fw-semibold">{{ $category->name }}</h3>
                             <div class="card_center_block">
                                 @foreach ($category->tags as $tag)
-                                    <a class="btn m-0 text-secondary" href="{{ route('tag.show', ['tag' => $tag->id])}}">{{ $tag->name }}</a>
+                                    <a class="btn border mb-0 ml-0 fw-bold text-secondary" href="{{ route('tag.show', ['tag' => $tag->id])}}">{{ $tag->name }}</a>
                                 @endforeach
                             </div>
-                        </div>
-                        <div class="card_bottom mt-1">
-                            <p>Последнее сообщение</p>
-                            @foreach ($category->tags->take(1) as $tag)
-                                @php $latestForum = $tag->forums()->latest()->first(); @endphp
-                                @if ($latestForum)
-                                    <p class="border border-light-subtle p-1 px-2 rounded-3 col-12 text-truncate">{{$latestForum->user->name}}  •  <span class="d-inline-block text-truncate mx-3" style="max-width: 60%; height: 14px;">{{$latestForum->title}}</span>  •  {{$latestForum->created_at}}</p>
-                                @endif
-                            @endforeach
                         </div>
                     </div>
                 </a>
             @endforeach
         </div>
     </div>
-    <x-right-side/>
 </div>
 @endsection

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="row p-0 block mt-3">
-    <h2 class="p-3">Результаты поиска</h2>
-    @foreach ($filteredProducts as $p)
+    @foreach ($products as $p)
+        <div class="my-3">
+            <h2 class="my-">{{ $p->branch->name }}</h2>
+            <p>{{ $p->tags->first()->name }}</p>
+        </div>
         <div class="col-2 mb-4">
             <a href="{{ route('product.show', ['product' => $p->id]) }}" class="card in">
                 <img src="{{ asset('storage/' . json_decode($p->photo)[0]) }}" class="card-img-top" alt="...">
@@ -11,7 +13,11 @@
                     <h5 class="card-title overflow-ellipsis">
                         {{ $p->title }}
                     </h5>
-                    <span class="card-text">{{ $p->branch->name}} &nbsp;</span>         
+                    @if ( $p->price == 0 || $p->price == null )
+                        <span class="card-text">Бесплатно &nbsp;</span>         
+                    @else
+                    <span class="card-text">цена: {{ $p->price }} &nbsp;</span>         
+                    @endif
                     <form action="{{ route('product.save', ['product' => $p->id]) }}" method="post">
                         @csrf
                         @php $userHasRated = false; @endphp

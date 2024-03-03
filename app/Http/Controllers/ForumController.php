@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
 { 
+    
     public function create()
     {
         $tags = Tag::all();
@@ -79,6 +80,11 @@ class ForumController extends Controller
         ]);
     
         return redirect()->route('forum.show', $forum)->with('success', 'Forum updated successfully');
+    }
+
+    public function notification()
+    {
+        return view('forum.notification');
     }
 
     public function destroy(Forum $forum)

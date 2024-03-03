@@ -31,7 +31,7 @@
                         <div class="col-6 load_block_center">
                             <a class="text-dark" href="{{ route('product.show', ['product' => $d->product->id])}}">
                                 <h5>{{$d->product->title}}</h5>
-                                <p class="bolim">{{$d->product->category->name}}</p>
+                                <p class="bolim">{{$d->product->branch->name}}</p>
                             </a>
                             <span class="span_1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">
@@ -81,7 +81,7 @@
                         <div class="col-6 load_block_center">
                             <a class="text-dark" href="{{ route('product.show', ['product' => $s->product->id])}}">
                                 <h5>{{$s->product->title}}</h5>
-                                <p class="bolim">{{$s->product->category->name}}</p>
+                                <p class="bolim">{{$s->product->branch->name}}</p>
                             </a>
                             <span class="span_1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none">

@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function showpro($branch, Category $category)
+    {
+        return view('category.showpro', compact('branch', 'category'));
+    }
+
     public function index()
     {
         $categories = Category::all();
@@ -18,7 +24,7 @@ class CategoryController extends Controller
         
     }
 
-     public function store(Request $request)
+    public function store(Request $request)
     {
         Category::create([
             'name' => $request['name'],

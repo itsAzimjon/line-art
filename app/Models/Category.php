@@ -13,6 +13,10 @@ class Category extends Model
         'name'
     ];
 
+    public function branches(){
+        return $this->belongsToMany(Branch::class);
+    }
+
     public function product(){
         return $this->hasOne(Product::class);
     }

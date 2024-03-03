@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'role_model',
+        'branch_id',
         'category_id',
         'photo',
         'file',
@@ -24,6 +24,10 @@ class Product extends Model
     
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function branch(){
+        return $this->belongsTo(Branch::class);
     }
 
     public function downloads(){

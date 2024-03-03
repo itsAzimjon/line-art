@@ -9,7 +9,7 @@
         @csrf
             <div class="modal-body">
                 <label for="categoryName" class="form-label mt-3">Category name</label>
-                <input type="text" class="form-control" id="categoryName" name="name">
+                <input required type="text" class="form-control" id="categoryName" name="name">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>

@@ -14,6 +14,7 @@ class FilterController extends Controller
     {
         $tags = Tag::all();
         $tagId = $request->input('tag_id');
+        $categoryId = $request->input('category_id');
         $roleModel = $request->input('role_model');
         $sortBy = $request->input('sort_by', 'popular');
         $query = $request->input('query');

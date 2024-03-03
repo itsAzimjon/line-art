@@ -18,6 +18,7 @@ class CreateRepliesTable extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('forum_id')->nullable()->constrained()->onDelete('cascade');
             $table->text('comment');
+            $table->integer('true_answer')->nullable();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Product;
@@ -17,10 +18,16 @@ class ProductController extends Controller
         return view('components.left-side', compact('products'));
     }
     
+    public function showpunkt($branch, Tag $tag)
+    {
+        $products = $tag->products()->where('branch_id', $branch)->get();
+        return view('product.showpunkt', compact('products', 'branch'));
+    }
+
     public function create()
     {
         return view('product.create')->with([
-            'categories' => Category::all(),
+            'branches' => Branch::all(),
             'tags' => Tag::all(),
         ]);
     }
@@ -39,8 +46,7 @@ class ProductController extends Controller
         $file = $request->hasFile('file') ? $request->file('file')->store('model') : null;
 
         $product = Product::create([
-            'role_model' => $request->input('role_model'),
-            'category_id' => $request->input('category_id'),
+            'branch_id' => $request->input('branch_id'),
             'photo' => json_encode($mults),
             'file' => $file,
             'title' => $request->input('title'),

@@ -9,14 +9,14 @@
         @csrf
             <div class="modal-body">
                 <label for="category" class="form-label">Tag category</label>
-                <select name="category_id" class="form-select" aria-label="Default select example">
+                <select required name="category_id" class="form-select" aria-label="Default select example">
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
 
                 <label for="tagName" class="form-label mt-3">Tag name</label>
-                <input type="text" class="form-control" id="tagName" name="name">
+                <input required type="text" class="form-control" id="tagName" name="name">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>

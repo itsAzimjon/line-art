@@ -5,165 +5,115 @@
         <h2>Исследуйте, устанавливайте, используйте и изменяйте тысячи файлов и строк.</h2>
     </div>
     @can('admin')   
-    <button type="button" class="btn btn-on mb-4" data-bs-toggle="modal" data-bs-target="#categortCreate">
-        + Add Category
-    </button>
-    <div class="modal fade" id="categortCreate" tabindex="-1" aria-labelledby="categortCreateLabel" aria-hidden="true">
-        <x-category-create/>
-    </div>
-
-    <button type="button" class="btn btn-on mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        + Add Tag
-    </button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <x-tag-create :categories="$categories" />
-    </div>
-    @endcan
-    <nav>
-        <div class="dropdown">
-            <a class="btn_toogle dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.77 13.75H15.73C13.72 13.75 12.75 12.82 12.75 10.9V4.1C12.75 2.18 13.73 1.25 15.73 1.25H19.77C21.78 1.25 22.75 2.18 22.75 4.1V10.9C22.75 12.82 21.77 13.75 19.77 13.75ZM15.73 2.75C14.46 2.75 14.25 3.09 14.25 4.1V10.9C14.25 11.91 14.46 12.25 15.73 12.25H19.77C21.04 12.25 21.25 11.91 21.25 10.9V4.1C21.25 3.09 21.04 2.75 19.77 2.75H15.73Z" fill="#28353D"/>
-                    <path d="M19.77 22.75H15.73C13.72 22.75 12.75 21.82 12.75 19.9V18.1C12.75 16.18 13.73 15.25 15.73 15.25H19.77C21.78 15.25 22.75 16.18 22.75 18.1V19.9C22.75 21.82 21.77 22.75 19.77 22.75ZM15.73 16.75C14.46 16.75 14.25 17.09 14.25 18.1V19.9C14.25 20.91 14.46 21.25 15.73 21.25H19.77C21.04 21.25 21.25 20.91 21.25 19.9V18.1C21.25 17.09 21.04 16.75 19.77 16.75H15.73Z" fill="#28353D"/>
-                    <path d="M8.27 22.75H4.23C2.22 22.75 1.25 21.82 1.25 19.9V13.1C1.25 11.18 2.23 10.25 4.23 10.25H8.27C10.28 10.25 11.25 11.18 11.25 13.1V19.9C11.25 21.82 10.27 22.75 8.27 22.75ZM4.23 11.75C2.96 11.75 2.75 12.09 2.75 13.1V19.9C2.75 20.91 2.96 21.25 4.23 21.25H8.27C9.54 21.25 9.75 20.91 9.75 19.9V13.1C9.75 12.09 9.54 11.75 8.27 11.75H4.23Z" fill="#28353D"/>
-                    <path d="M8.27 8.75H4.23C2.22 8.75 1.25 7.82 1.25 5.9V4.1C1.25 2.18 2.23 1.25 4.23 1.25H8.27C10.28 1.25 11.25 2.18 11.25 4.1V5.9C11.25 7.82 10.27 8.75 8.27 8.75ZM4.23 2.75C2.96 2.75 2.75 3.09 2.75 4.1V5.9C2.75 6.91 2.96 7.25 4.23 7.25H8.27C9.54 7.25 9.75 6.91 9.75 5.9V4.1C9.75 3.09 9.54 2.75 8.27 2.75H4.23Z" fill="#28353D"/>
-                </svg>
-                Области проектирования
-            </a>
-            @can('admin')
-                <div class="dropdown">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Category
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        @foreach ($categories as $category)
-                        <li class="d-flex">
-                            <p class="p-2" data-cat-id="{{ $category->id }}">{{ $category->name }}</p>
-                            <form action="{{ route('category.destroy', ['category' => $category->id])}}" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                    <button class="btn btn-sm btn-outline-danger" type="submit">Удалить</button>
-                            </form>                    
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endcan
-            <ul class="dropdown-menu" id="tagMenu">
-                @foreach ($tags as $tag)
-                    <li class="d-flex">
-                        <a class="dropdown-item pt-2" data-tag-id="{{ $tag->id }}">{{ $tag->name }}</a>
-                        @can('admin')
-                            <form action="{{ route('tag.destroy', ['tag' => $tag->id])}}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                                <button class="btn btn-sm btn-outline-danger" type="submit">Удалить</button>
-                            </form>                    
-                        @endcan
-                    </li>
-                @endforeach
-            </ul>
+        <button type="button" class="btn btn-on mb-0" data-bs-toggle="modal" data-bs-target="#Branch">
+            + Add Branch
+        </button>
+        <div class="modal fade" id="Branch" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <x-branch-create :branches="$branches" :categories="$categories"/>
         </div>
-        
-        <ul class="ul_kniga">
-            {{-- <li><a href="">Исследовать</a></li> --}}
-            <li><a href="{{ route('filter', ['role_model' => '1']) }}">Книги</a></li>
-            <li><a href="{{ route('filter', ['role_model' => '2']) }}">Чертежи</a></li>
-            <li><a href="{{ route('filter', ['role_model' => '3']) }}">Курсы</a></li>
-            <li><a href="{{ route('filter', ['role_model' => '4']) }}">Нормативы</a></li>
-            <li><a href="{{ route('filter', ['role_model' => '5']) }}">Расчёты</a></li>
-        </ul>
-
-        <div class="dropdown">
-            <a class="btn_toogle_left dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><b>Сортировать</b> Популярные</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ route('filter', ['sort_by' => 'popular']) }}">Популярные</a></li>
-                <li><a class="dropdown-item" href="{{ route('filter', ['sort_by' => 'highest_rated']) }}">С высшими оценками</a></li>
-                <li><a class="dropdown-item" href="{{ route('filter', ['sort_by' => 'most_downloaded']) }}">Самые скачиваемые</a></li>
-                <li><a class="dropdown-item" href="{{ route('filter', ['sort_by' => 'newest']) }}">Новые</a></li>
-            </ul>
+        <button type="button" class="btn btn-on mb-0" data-bs-toggle="modal" data-bs-target="#categortCreate">
+            + Add Category
+        </button>
+        <div class="modal fade" id="categortCreate" tabindex="-1" aria-labelledby="categortCreateLabel" aria-hidden="true">
+            <x-category-create/>
         </div>
-        
-        <form class="d-none" id="filterForm" action="{{ route('filter') }}" method="GET">
-            <input type="hidden" name="tag_id" id="selectedTagId" value="">
-        </form>
-    
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#tagMenu a').on('click', function () {
-                    $('#selectedTagId').val($(this).data('tag-id'));
-                    $('#filterForm').submit();
-                });
-            });
-        </script>
-    </nav>
-    @can('admin')    
-        <a href="{{ route('product.create')}}" class="btn btn-on mb-2 mt-4">
+        <button type="button" class="btn btn-on mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            + Add Tag
+        </button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <x-tag-create :categories="$categories" />
+        </div>
+        <a href="{{ route('product.create')}}" class="btn btn-primary mb-0">
             + Add Product
         </a>
     @endcan
-    @foreach ($products->groupBy('role_model') as $roleModel => $groupedProducts)
-    <div class="main_title d-flex">
-        @if ($roleModel == 1)
-            <h4>Книги</h4>
-            <a href="{{ route('filter', ['role_model' => 1])}})">Показать все</a>
-        @elseif ($roleModel == 2)
-            <h4>Чертежи</h4>
-            <a href="{{ route('filter', ['role_model' => 2])}})">Показать все</a>
-        @elseif ($roleModel == 3)
-            <h4>Курсы</h4>
-            <a href="{{ route('filter', ['role_model' => 3])}})">Показать все</a>
-        @elseif ($roleModel == 4)
-            <h4>Нормативы</h4>
-            <a href="{{ route('filter', ['role_model' => 4])}})">Показать все</a>
-        @elseif ($roleModel == 5)
-            <h4>Расчёты</h4>
-            <a href="{{ route('filter', ['role_model' => 5])}})">Показать все</a>
-        @elseif ($roleModel == 6)
-            <h4>Исследовать</h4>
-            <a href="{{ route('filter', ['role_model' => 6])}})">Показать все</a>
-        @endif
-    </div>
-    <div class="row p-0 block mt-3">
-        @foreach ($groupedProducts->take(6) as $p)
-            <div class="col-2 mb-4">
-                <a href="{{ route('product.show', ['product' => $p->id]) }}" class="card in">
-                    <img src="{{ asset('storage/' . json_decode($p->photo)[0]) }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title overflow-ellipsis">
-                            {{ $p->title }}
-                        </h5>
-                        <span class="card-text">{{ $p->category->name}} &nbsp;</span>   
-                            <form action="{{ route('product.save', ['product' => $p->id]) }}" method="post">
-                                @csrf
-                                @php $userHasRated = false; @endphp
-                                @foreach ($p->saves as $s)
-                                @if (auth()->check())
-                                    @if ($s->user_id == auth()->user()->id)
-                                        @php $userHasRated = true; @endphp
-                                        <button type="submit" class="float-end btn" style="margin: -27px 0 0 0">
-                                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill="#F57500" fill-rule="evenodd" clip-rule="evenodd" d="M8.48237 2.4541C4.37737 2.4541 3.68388 3.05311 3.68388 7.87152C3.68388 13.2658 3.58297 14.6656 4.60874 14.6656C5.63387 14.6656 7.30813 12.2979 8.48237 12.2979C9.65661 12.2979 11.3309 14.6656 12.356 14.6656C13.3818 14.6656 13.2809 13.2658 13.2809 7.87152C13.2809 3.05311 12.5874 2.4541 8.48237 2.4541Z" stroke="#F57500" stroke-width="1.15688" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                        </button>
-                                        @break
-                                    @endif
-                                @endif
-                                @endforeach
-                
-                                @if (!$userHasRated)
-                                    <button type="submit" class="float-end btn" style="margin: -27px 0 0 0">
-                                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.48237 2.4541C4.37737 2.4541 3.68388 3.05311 3.68388 7.87152C3.68388 13.2658 3.58297 14.6656 4.60874 14.6656C5.63387 14.6656 7.30813 12.2979 8.48237 12.2979C9.65661 12.2979 11.3309 14.6656 12.356 14.6656C13.3818 14.6656 13.2809 13.2658 13.2809 7.87152C13.2809 3.05311 12.5874 2.4541 8.48237 2.4541Z" stroke="#9CA0AF" stroke-width="1.15688" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
+    @can('admin')
+        <nav>
+            <div class="dropdown d-flex"> 
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle px-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Branches
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        @foreach ($branches as $branch)
+                            <li class="d-flex">
+                                <p class="p-2" data-cat-id="{{ $branch->id }}">{{ $branch->name }}</p>
+                                <div>
+                                    <form action="{{ route('branch.destroy', ['branch' => $branch->id]) }}" method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-sm btn-outline-danger my-1 mx-2" type="submit" onclick="return confirm('Вы уверены, что хотите удалить эту ветку?')">Удалить</button>
+                                    </form>                    
+                                    <button type="button" class="btn btn-sm btn-outline-warning m-0 mx-2" data-bs-toggle="modal" data-bs-target="#BranchEdit{{ $branch->id }}">
+                                        edit
                                     </button>
-                                @endif
-                            </form>
-                    </div>
-                </a>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                    @foreach ($branches as $branch)
+                        <div class="modal fade" id="BranchEdit{{ $branch->id }}" tabindex="-1" aria-labelledby="BranchEditLabel{{ $branch->id }}" aria-hidden="true">
+                            <x-branch-edit :branch="$branch" :categories="$categories"/>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle mx-2 px-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categories
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        @foreach ($categories as $category)
+                            <li class="d-flex">
+                                <p class="p-2" data-cat-id="{{ $category->id }}">{{ $category->name }}</p>
+                                <form action="{{ route('category.destroy', ['category' => $category->id])}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                        <button class="btn btn-sm btn-outline-danger" type="submit" onclick="return confirm('Вы уверены, что хотите удалить эту ветку?')">Удалить</button>
+                                </form>                    
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-secondary dropdown-toggle  px-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Tags
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        @foreach ($tags as $tag)
+                            <li class="d-flex">
+                                <p class="p-2" data-cat-id="{{ $tag->id }}">{{ $tag->name }}</p>
+                                <form action="{{ route('tag.destroy', ['tag' => $tag->id])}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                        <button class="btn btn-sm btn-outline-danger" type="submit" onclick="return confirm('Вы уверены, что хотите удалить эту ветку?')">Удалить</button>
+                                </form>                    
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
-        @endforeach
-    </div>
+        </nav>
+    @endcan
+    @foreach ($branches as $branch)
+    <a href="{{ route('branch.show', ['branch' => $branch->id]) }}">
+        <div class="cls_cards p-3 mt-2 mb-2">
+            <div class="card_top">
+                <p>
+                    <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.66 4.68375V9.79486C10.66 9.90331 10.6169 10.0073 10.5402 10.084C10.4636 10.1607 10.3596 10.2038 10.2511 10.2038H1.46C1.338 10.2038 1.221 10.1553 1.13473 10.069C1.04846 9.98275 1 9.86575 1 9.74375V3.30375C1 3.18175 1.04846 3.06475 1.13473 2.97848C1.221 2.89221 1.338 2.84375 1.46 2.84375H4.06667C4.1662 2.84375 4.26304 2.87603 4.34267 2.93575L5.93733 4.13175C6.01696 4.19147 6.1138 4.22375 6.21333 4.22375H10.2C10.322 4.22375 10.439 4.27221 10.5253 4.35848C10.6115 4.44475 10.66 4.56175 10.66 4.68375Z" stroke="#858EAD" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2.84 2.84V1.46C2.84 1.338 2.88846 1.221 2.97473 1.13473C3.06099 1.04846 3.178 1 3.3 1H5.90666C6.00619 1 6.10304 1.03228 6.18266 1.092L7.77733 2.288C7.85695 2.34772 7.9538 2.38 8.05333 2.38H12.04C12.162 2.38 12.279 2.42846 12.3653 2.51473C12.4515 2.601 12.5 2.718 12.5 2.84V7.95111C12.5 8.00481 12.4894 8.05798 12.4689 8.10759C12.4483 8.1572 12.4182 8.20227 12.3802 8.24024C12.3423 8.27821 12.2972 8.30833 12.2476 8.32888C12.198 8.34942 12.1448 8.36 12.0911 8.36H10.66" stroke="#858EAD" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg> {{ $branch->categories->count() }} подразделов
+                </p>
+            </div>
+            <div class="card_center">
+                <h3 class="fw-semibold">{{ $branch->name }}</h3>
+                <div class="card_center_block">
+                    @foreach ($branch->categories as $category)
+                        <a class="btn border mb-0 ml-0 fw-bold text-secondary" href="{{ route('product-category.show', ['category' => $category->id, 'branch' => $branch->id])}}">{{ $category->name }}</a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </a>
     @endforeach
 @endsection
