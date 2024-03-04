@@ -16,5 +16,6 @@ class BranchSeeder extends Seeder
     {
         Branch::create(['name' => 'articles']);
         Branch::create(['name' => 'news']);    
+        Branch::create(['name' => 'course']);    
     }
 }
