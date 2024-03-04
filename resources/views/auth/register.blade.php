@@ -48,11 +48,10 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                
                                 <div class="form-group col-6 mb-3 px-2">
-                                    <label for="experience">Опыт:</label>
-                                    <input required class="form-control form-control-sm" type="text" id="experience" name="experience" value="{{ old('experience') }}" placeholder="Введите свой опыт">
-                                    @error('experience')
+                                    <label for="phone">Номер телефона:</label>
+                                    <input required class="form-control form-control-sm" type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Введите свой номер телефона">
+                                    @error('phone')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -74,14 +73,6 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            </div>
-                            
-                            <div class="form-group mb-3">
-                                <label for="phone">Номер телефона:</label>
-                                <input required class="form-control form-control-sm" type="tel" id="phone" name="phone" value="{{ old('phone') }}" placeholder="Введите свой номер телефона">
-                                @error('phone')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
                             </div>
                             
                             <div class="form-group mb-3">

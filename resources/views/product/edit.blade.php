@@ -29,13 +29,10 @@
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Category</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
-                                <select name="role_model" aria-label="Default select example" class="form-select">
-                                    <option value="1">Книги</option>
-                                    <option value="2">Чертежи</option>
-                                    <option value="3">Курсы</option>
-                                    <option value="4">Нормативы</option>
-                                    <option value="5">Расчёты</option>
-                                    <option value="6">Исследовать</option>
+                                <select name="branch_id" aria-label="Default select example" class="form-select">
+                                    @foreach ($branches as $branch)
+                                        <option value="{{ $branch->id}}">{{ $branch->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -48,20 +45,6 @@
                                     @error('file')
                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                     @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="welcome-title" class="form-control-label">Category</label>
-                            <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
-                                <select name="category_id" aria-label="Default select example" class="form-select">
-                                    @foreach($categories as $option)
-                                        <option value="{{ $option->id }}" {{ $product->category_id == $option->id ? 'selected' : '' }}>
-                                            {{ $option->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
                             </div>
                         </div>
                     </div>

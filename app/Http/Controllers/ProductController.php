@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('product.create')->with([
-            'branches' => Branch::all(),
+            'branches' => Branch::where('id', '<', '2')->get(),
             'tags' => Tag::all(),
         ]);
     }
@@ -46,13 +46,13 @@ class ProductController extends Controller
         $file = $request->hasFile('file') ? $request->file('file')->store('model') : null;
 
         $product = Product::create([
-            'branch_id' => $request->input('branch_id'),
+            'branch_id' => $request->branch_id,
             'photo' => json_encode($mults),
             'file' => $file,
-            'title' => $request->input('title'),
-            'price' => $request->input('price'),
-            'description' => $request->input('description'),
-            'doc_number' => $request->input('doc_number'),
+            'title' => $request->title,
+            'price' => $request->price,
+            'description' => $request->description,
+            'doc_number' => $request->doc_number,
         ]);
 
         if ($request->has('tags')) {
@@ -72,7 +72,7 @@ class ProductController extends Controller
             'view' => $views
         ]);
 
-        $products = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->take(3)->get();
+        $products = Product::where('branch_id', '>', '2')->where('id', '!=', $product->id)->take(3)->get();
         return view('product.show', compact(['product', 'products']));
     }
 
@@ -90,10 +90,10 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $categories = Category::all();
+        $branches = Branch::where('id', '<', '2')->get();
         $tags = Tag::all();
     
-        return view('product.edit', compact('product', 'categories', 'tags'));
+        return view('product.edit', compact('product', 'branches', 'tags'));
     }
 
     public function update(Request $request, Product $product)
@@ -111,7 +111,7 @@ class ProductController extends Controller
 
         $product->update([
             'role_model' => $request->role_model,
-            'category_id' => $request->category_id,
+            'branch_id' => $request->branch_id,
             'photo' => !empty($mults) ? json_encode($mults) : $product->photo,
             'file' => $file ?? $product->file,
             'title' => $request->title,

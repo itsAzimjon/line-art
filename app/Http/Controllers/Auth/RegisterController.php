@@ -57,7 +57,6 @@ class RegisterController extends Controller
             'region' => ['required'],
             'phone' => ['required'],
             'job' => ['required'],
-            'experience' => ['required'],
             'password' => ['required', 'string'],
         ]);
     }
@@ -78,7 +77,6 @@ class RegisterController extends Controller
             'region' => $data['region'],
             'phone' => $data['phone'],
             'job' => $data['job'],
-            'experience' => $data['experience'],
             'password' => Hash::make($data['password']),
         ]);
     }

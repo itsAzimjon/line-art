@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
@@ -43,6 +44,7 @@ Route::get('/byAdmin/user/{user}', [UserController::class, 'userEditByAdmin'])->
 Route::put('/byAdmin/user/update/{user}', [UserController::class, 'userUpdateByAdmin'])->name('user.update.byadmin');
 Route::delete('/byAdmin/user/delete/{user}', [UserController::class, 'userDeleteByAdmin'])->name('user.delete.byadmin');
 
+
 Auth::routes();
 Route::resources([
     'product' => ProductController::class,
@@ -55,6 +57,7 @@ Route::resources([
     'reply' => ReplyController::class,
     'replylike' => ReplylikeController::class,
     'replytoreply' => ReplytoreplyController::class,
+    'article' => ArticleController::class,
 ]);
 
 Route::get('calculation', function(){ 

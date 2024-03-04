@@ -1,56 +1,57 @@
 @extends('layouts.app')
 @section('content')
-<h3 style="font-weight: 600">Определение расчетного сопротивления основания</h2>
+<h3 class="my-4" style="font-weight: 600">Zamin gruntining hisobiy qarshiligi</h2>
 <form id="foundationForm">
-    <h4>Характеристики грунта</h4>
-    <label for="phi">Угол внутреннего трения (φ):</label>
-    <input class="" type="number" id="phi" step="0.01" value="19" required> °<br>
+    <h4>Gruntning harakteristikasi</h4>
+    <div class="form-group">
+        <label for="phi">Ichki ishqalanish koeffitsiеnti (φ):</label>
+        <input type="number" id="phi" step="0.01" value="19" required> °
 
-    <label for="c">Удельное сцепление грунта (c):</label>
-    <input type="number" id="c" step="0.01" value="1.8" required> т/м²<br>
+        <label for="c">bеvosita poydеvor ostida yotgan gruntning  solishtirma bog’lanish kuchining hisobiy qiymati (c):</label>
+        <input type="number" id="c" step="0.01" value="1.8" required> т/м²
 
-    <label for="gammaII_prime">Объемный вес грунта выше подошвы фундамента (γII′):</label>
-    <input type="number" id="gammaII_prime" step="0.01" value="1.85" required> т/м³<br>
+        <label for="gammaII_prime">poydеvor tag sathidan yuqorida yotgan gruntlar uchun (γII′):</label>
+        <input type="number" id="gammaII_prime" step="0.01" value="1.85" required> т/м³<br>
 
-    <label for="gammaII">Объемный вес грунта ниже подошвы фундамента (γII):</label>
-    <input type="number" id="gammaII" step="0.01" value="1.84" required> т/м³<br>
+        <label for="gammaII">poydеvor tovonidan pastda joylashgan gruntlarning solishtirma og’irligining o’rtacha hisobiy qiymati (yеr osti suvlari mavjud bo’lganda suvning muallaq tutib turuvchi ta'sirini hisobga olib aniqlanadi) (γII):</label>
+        <input type="number" id="gammaII" step="0.01" value="1.84" required> т/м³<br>
 
-    <h4>Учесть взвешивающее действие воды <br> (учитывается только для грунта ниже подошвы)</h4>
-    <input type="checkbox" id="waterWeightCheck" onchange="toggleInputs()">
-    <label for="waterWeightCheck">Учитывать вес воды</label><br>
+        <h4>Учесть взвешивающее действие воды <br> (учитывается только для грунта ниже подошвы)</h4>
+        <input style="width:14px; margin-button:-10px" type="checkbox" id="waterWeightCheck" onchange="toggleInputs()">
+        <label class="text-primary" for="waterWeightCheck">Учитывать вес воды</label><br>
 
-    <label for="gammaS">Объемный вес частиц грунта:</label>
-    <input disabled type="number" id="gammaS" step="0.01" value="0" required> т/м³<br>
+        <label for="gammaS">Объемный вес частиц грунта:</label>
+        <input disabled type="number" id="gammaS" step="0.01" value="0" required> т/м³<br>
 
-    <label for="e">Коэффициент пористости:</label>
-    <input disabled type="number" id="e" step="0.01" value="0" required><br><br>
+        <label for="e">Коэффициент пористости:</label>
+        <input disabled type="number" id="e" step="0.01" value="0" required><br><br>
 
-    <h4>Геометрические характеристики фундамента</h4>
-    <label for="gammaS">Ширина подошвы фундамента (b):</label>
-    <input type="number" id="gammaS" step="0.01" value="2.5" required> м<br>
+        <h4>Poydevorning geometrik xarakteristikasi</h4>
+        <label for="gammaS">Fundamentning poydevorining eni (b):</label>
+        <input type="number" id="gammaS" step="0.01" value="2.5" required> м<br>
 
-    <label for="e">Глубина заложения фундамента (e):</label>
-    <input type="number" id="e" step="0.01" value="1.63" required> м<br>
+        <label for="e">yеrto’lasiz inshootlar poydеvorining tеkislangan maydon sathidan o’lchanadigan joylashtirish chuqur- ligi yoki ichki va tashqi poydеvorlarning yеrto’la tagidan o’lchanadigan kеltirilgan joylashtirish chuqurligi (e):</label>
+        <input type="number" id="e" step="0.01" value="1.63" required> м<br>
 
-    <label for="b">Ширина подошвы фундамента (b):</label>
-    <input type="number" id="b" step="0.01" value="2.5" required> м<br>
+        <label for="b">Fundamentning poydevorining eni (b):</label>
+        <input type="number" id="b" step="0.01" value="2.5" required> м<br>
 
-    <label for="d1">Глубина заложения фундамента (d1):</label>
-    <input type="number" id="d1" step="0.01" value="1.63" required> м<br>
+        <label for="d1">yеrto’lasiz inshootlar poydеvorining tеkislangan maydon sathidan o’lchanadigan joylashtirish chuqur- ligi yoki ichki va tashqi poydеvorlarning yеrto’la tagidan o’lchanadigan kеltirilgan joylashtirish chuqurligi (d1):</label>
+        <input type="number" id="d1" step="0.01" value="1.63" required> м<br>
 
-    <label for="db">Глубина подвала (db):</label>
-    <input type="number" id="db" step="0.01" value="0.0" required> м<br>
+        <label for="db">yеrto’la chuqurligi – tеkislangan maydon sathidan yеrto’la poligacha bo’lgan masofa, m; (eni B≤20 m va chuqurligi 2 m dan ortiq bo’lgan yеrto’lali inshootlar uchun db=2 m yеrto’laning eni B>20 m bo’lganda db= 0) (db):</label>
+        <input type="number" id="db" step="0.01" value="0.0" required> м<br>
 
-    <h4>Коэффициенты условий работы</h4>
-    <label for="gammaC1">Коэффициент принимаемый по табл.5.4 СП (γс1):</label>
-    <input type="number" id="gammaC1" step="0.01" value="1.2" required><br>
+        <h4>Ish sharoitlari koeffitsientlari</h4>
+        <label for="gammaC1">3-jadvaldan qabul qilinadigan ish sharoitlari koeffitsiеntlari (γс1):</label>
+        <input type="number" id="gammaC1" step="0.01" value="1.2" required><br>
 
-    <label for="gammaC2">Коэффициент принимаемый по табл.5.4 СП (γс2):</label>
-    <input type="number" id="gammaC2" step="0.01" value="1.0" required><br>
+        <label for="gammaC2">3-jadvaldan qabul qilinadigan ish sharoitlari koeffitsiеntlari (γс2):</label>
+        <input type="number" id="gammaC2" step="0.01" value="1.0" required><br>
 
-    <label for="k">Коэффициент в зависимости от характеристик грунта (k):</label>
-    <input type="number" id="k" step="0.01" value="1" required><br>
-
+        <label for="k">gruntning mustahkamlik ko’satkichlari(k):</label>
+        <input type="number" id="k" step="0.01" value="1" required><br>
+    </div>
     <button class="btn btn-on fw-bold px-5 my-4" type="button" onclick="calculateBearingCapacity()">Calculate</button>
 </form>
 
@@ -136,24 +137,24 @@
             Mc * c
         );
         const calculationSteps =
-        `<p><strong>Определение расчетного сопротивления грунта основания</strong></p>` +
-            `<p>Допущения и предпосылки: Методика расчета подготовлена согласно СП 22.133302011 п.5.6.7.</p>` +
-            `<p><strong>Исходные данные:</strong></p>` +
+        `<p><strong>zamin gruntning hisobiy qarshiligini aniqlash</strong></p>` +
+            `<p> Hisob QMQ 2.02.01-98, 7-ifoda orqali aniqlanadi.</p>` +
+            `<p><strong>Dastlabki ma'lumotlar:</strong></p>` +
             `<ul>` +
             `<li>φ = ${phi}°; c = ${c} т/м²; γс1 = ${gammaC1}; γс2 = ${gammaC2}; k = ${k}; γII = ${gammaII} т/м³; γII′ = ${gammaII_prime} т/м³; d1 = ${d1} м; d′ = ${db} м; b = ${b} м.</li>` +
             `</ul>` +
             `<p><strong>Расчет:</strong></p>` +
             `<ul>` +
-            `<li>По таблице 5.5 СП для текущего значения φ определяем следующие значения:</li>` +
+            `<li>4-jadval bo’yicha qabul qilinadigan koeffitsiеnt:</li>` +
             `<li>Mγ = ${Mgamma}, Mq = ${Mq}, Mc = ${Mc}</li>` +
             `<li>Условие d′ = ${db} м < 2 м выполняется, b = ${b} м < 10 м, следовательно kz = ${kz}.</li>` +
-            `<li>Расчетное сопротивление грунта основания определяется по формуле (5.7):</li>` +
+            `<li>Hisob QMQ 2.02.01-98, 7-ifoda orqali aniqlanadi:</li>` +
             `</ul>` +
             `<p>R = γс1 ⋅ γс2 / k ⋅ (Mγ ⋅ k ⋅ kz ⋅ b ⋅ γII + Mq ⋅ d1 ⋅ γII′ + (Mq − 1) ⋅ d′ ⋅ γII′ + Mc ⋅ c)</p>` +
             `<p>R = (${gammaC1} ⋅ ${gammaC2}) / ${k} ⋅ (${Mgamma} ⋅ ${k} ⋅ ${kz} ⋅ ${b} ⋅ ${gammaII} + ${Mq} ⋅ ${d1} ⋅ ${gammaII_prime} + (${Mq} − 1) ⋅ ${db} ⋅ ${gammaII_prime} + ${Mc} ⋅ ${c})</p>` +
             `<p>R = ${bearingCapacity.toFixed(2)} т/м²</p>` +
             `<p><strong>Вывод:</strong></p>` +
-            `<p>Расчетное сопротивление грунта составляет: R = ${bearingCapacity.toFixed(2)} т/м².</p>`;
+            `<p>Gruntning hisobiy qarshiligi: R = ${bearingCapacity.toFixed(2)} т/м².</p>`;
         document.getElementById('result').innerHTML =
             `<br>${calculationSteps}`;
     }

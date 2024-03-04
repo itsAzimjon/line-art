@@ -15,8 +15,8 @@ class CreateBranchCategoryTable extends Migration
     {
         Schema::create('branch_category', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->constrained();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('branch_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

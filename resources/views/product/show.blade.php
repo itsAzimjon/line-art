@@ -173,20 +173,20 @@
         <h6 class="center_h5">Последнее обновление: {{ $product->created_at->locale('ru')->diffForHumans() }}</h6>
     </div>
     <div class="row">
-        @foreach ($products as $prod)
+        @foreach ($products as $product)
             <div class="col-2 mb-4">
-                <a href="{{ route('product.show', ['product' => $prod->id]) }}" class="card in">
-                    <img src="{{ asset('storage/' . json_decode($prod->photo)[0]) }}" class="card-img-top" alt="...">
+                <a href="{{ route('product.show', ['product' => $product->id]) }}" class="card in">
+                    <img src="{{ asset('storage/' . json_decode($product->photo)[0]) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title overflow-ellipsis">
-                            {{ $prod->title }}
+                            {{ $product->title }}
                         </h5>
-                        <span class="card-text">{{ $prod->category->name}} &nbsp;</span>
+                        <span class="card-text">{{ $product->branch->name}} &nbsp;</span>
                        
-                        <form action="{{ route('product.save', ['product' => $prod->id]) }}" method="post">
+                        <form action="{{ route('product.save', ['product' => $product->id]) }}" method="post">
                             @csrf
                             @php $userHasRated = false; @endphp
-                            @foreach ($prod->saves as $s)
+                            @foreach ($product->saves as $s)
                                 @if (auth()->check() && $s->user_id == auth()->user()->id)
                                     @php $userHasRated = true; @endphp
                                     <button type="submit" class="float-end btn" style="margin: -27px 0 0 0">

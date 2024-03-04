@@ -25,6 +25,5 @@
                 @endforeach
             </div>
         </div>
-        <x-right-side/>
     </div>
 @endsection

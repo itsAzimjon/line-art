@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('branch_id')->constrained()->onDelete('cascade');
+            $table->foreignId('branch_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
             $table->text('photo')->nullable();
             $table->string('file')->nullable();
