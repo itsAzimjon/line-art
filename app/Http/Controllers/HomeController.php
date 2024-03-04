@@ -27,7 +27,7 @@ class HomeController extends Controller
         $tags = Tag::orderBy('name')->get();
         $products = Product::latest()->get();
         $categories = Category::all();
-        $branches = Branch::where('id', '<', '2')->get();
+        $branches = Branch::where('id', '>', '3')->get();
 
         return view('welcome', compact(['tags','categories', 'products', 'branches']));   
     }
