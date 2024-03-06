@@ -25,7 +25,7 @@
                         <h6>{{ $forum->user->experience}} год стажа</h6>
                     </div>
                     <div class="user_date">
-                        <p>{{ \Carbon\Carbon::parse($forum->created_at)->locale('ru')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
+                        <p>{{ \Carbon\Carbon::parse($forum->created_at)->locale('uz')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                     </div>
                 </div>
                 <div class="card_center mx-1 py-3">
@@ -158,7 +158,7 @@
                                         <h6>Модератор</h6>
                                     </div>
                                     <div class="user_date m-1">
-                                        <p>{{ \Carbon\Carbon::parse($reply->created_at)->locale('ru')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
+                                        <p>{{ \Carbon\Carbon::parse($reply->created_at)->locale('uz')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                                     </div>
                                 </div>
                                 <div>
@@ -233,7 +233,7 @@
                                                     <p>{{ $r2r->user->job }}</p>
                                                 </div>
                                                 <div class="user_date">
-                                                    <p>{{ \Carbon\Carbon::parse($r2r->created_at)->locale('ru')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
+                                                    <p>{{ \Carbon\Carbon::parse($r2r->created_at)->locale('uz')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                                                 </div>
                                             </div>
                                             <div class="d-flex">

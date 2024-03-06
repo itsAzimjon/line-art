@@ -39,11 +39,15 @@ Route::post('/product/{product}/like', [RateController::class, 'like'])->name('p
 Route::post('/product/{product}/save', [SaveController::class, 'save'])->name('product.save');
 Route::post('/product/{product}/buy', [DownloadController::class, 'buy'])->name('product.buy');
 
-Route::get('/admin', [UserController::class, 'admin'])->name('admin');
-Route::get('/byAdmin/user/{user}', [UserController::class, 'userEditByAdmin'])->name('user.edit.byadmin');
-Route::put('/byAdmin/user/update/{user}', [UserController::class, 'userUpdateByAdmin'])->name('user.update.byadmin');
-Route::delete('/byAdmin/user/delete/{user}', [UserController::class, 'userDeleteByAdmin'])->name('user.delete.byadmin');
+Route::get('/news&article/create/{role}', [ArticleController::class, 'createTwo'])->name('na.create');
 
+
+Route::middleware('can:suprame')->group(function () {
+    Route::get('/admin', [UserController::class, 'admin'])->name('admin');
+    Route::get('/byAdmin/user/{user}', [UserController::class, 'userEditByAdmin'])->name('user.edit.byadmin');
+    Route::put('/byAdmin/user/update/{user}', [UserController::class, 'userUpdateByAdmin'])->name('user.update.byadmin');
+    Route::delete('/byAdmin/user/delete/{user}', [UserController::class, 'userDeleteByAdmin'])->name('user.delete.byadmin');
+});
 
 Auth::routes();
 Route::resources([

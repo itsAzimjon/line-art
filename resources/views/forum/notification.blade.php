@@ -14,7 +14,7 @@
                     <div class="col-11 notif_right">
                         <h3 class="col-10 text-truncate">{{ $forum->title}}</h3>
                         <p class="col-12 text-truncate">{{ $forum->description}}</span> <span class="time">
-                            <p>{{ \Carbon\Carbon::parse($forum->created_at)->locale('ru')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($forum->created_at)->locale('uz')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                         </span></p>
                     </div>
                 </a>

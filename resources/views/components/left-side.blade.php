@@ -2,10 +2,12 @@
     <div class="cls_info">
         <h6 class="mt-2 mb-2">Популярные разделы</h6>
         @foreach (App\Models\Tag::inRandomOrder()->take(5)->get() as $tag)
-            <div class="cls_info-text">
-                <h6>{{ $tag->name}}</h6>
-                <p>{{ $tag->forums->count() }}  Форумы</p>
-            </div>
+            <a href="{{ route('tag.show', ['tag' => $tag->id])}}">
+                <div class="cls_info-text">
+                    <h6>{{ $tag->name}}</h6>
+                    <p>{{ $tag->forums->count() }}  Форумы</p>
+                </div>
+            </a>
         @endforeach
     </div>
     <div class="cls_block">

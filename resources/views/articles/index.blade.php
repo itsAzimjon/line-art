@@ -6,7 +6,7 @@
         <div class="row">
             <div>
                 <h2 class="p-3 d-inline fw-bold">Статьи</h2>
-                <a href="{{ route('article.create')}}" class="btn btn-primary float-end mt-2">+Add Articles</a>
+                <a href="{{ route('na.create',  ['role' =>'1'])}}" class="btn btn-primary float-end mt-2">+Add Articles</a>
             </div>
             @foreach ($products as $p)
                 <div class="col-3 mb-4">

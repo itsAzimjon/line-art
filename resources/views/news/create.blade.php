@@ -23,9 +23,8 @@
                         </button>
                     </div>
                 @endif
-                
                 <div class="row">
-                    <input type="hidden" value="{{$role}}" name="branch_id">
+                    <input type="hidden" value="1" name="branch_id">
                     <div class="col-12">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Tag</label>

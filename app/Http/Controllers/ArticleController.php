@@ -25,10 +25,10 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createTwo($role)
     {
         $tags = Tag::all();
-        return view('articles.create', compact('tags'));
+        return view('articles.create', compact(['tags', 'role']));
     }
 
     /**

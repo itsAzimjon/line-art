@@ -177,7 +177,7 @@
 <div class="row book_info">
     <div class="col col-12 d-flex justify-content-between">
         <p class="active">Похожие файлы</p>
-        <h6 class="center_h5">Последнее обновление: {{ $product->created_at->locale('ru')->diffForHumans() }}</h6>
+        <h6 class="center_h5">Последнее обновление: {{ $product->created_at->locale('uz')->diffForHumans() }}</h6>
     </div>
     <div class="row">
         @foreach ($products as $product)
@@ -259,7 +259,7 @@
                         </div>
                     @endif
                     <p class="comment_user_name">{{ $c->user->name }}</p>
-                    <p class="comment_user_time">{{ $c->created_at->locale('ru')->diffForHumans() }}</p>
+                    <p class="comment_user_time">{{ $c->created_at->locale('uz')->diffForHumans() }}</p>
                 </div>
                 <div class="col-6 comment_text">
                     <p>{{ $c->body }}</p>

@@ -30,6 +30,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $id;
         });
         
+        Gate::define('suprame', function ($user) {
+            return $user->id == 1;
+        });
+
         Gate::define('admin', function ($user) {
             return $user->role_id == 1;
         });

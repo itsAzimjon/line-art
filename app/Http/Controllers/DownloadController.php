@@ -44,7 +44,9 @@ class DownloadController extends Controller
     }
     public function price()
     {
-        return view('product.price');
+        return redirect()->route('login');
+
+        //return view('product.price');
     }
 
     public function index()
