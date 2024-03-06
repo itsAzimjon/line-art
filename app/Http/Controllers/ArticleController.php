@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $products = Product::where('branch_id', 'like', '1')->get();
+        $products = Product::where('branch_id', 'like', '1')->orderByDesc('created_at')->get();
 
         return view('articles.index', compact('products'));
     }
@@ -61,51 +61,74 @@ class ArticleController extends Controller
             }
         }
 
-        return redirect()->route('article.show', ['product' => $product->id])->with('success', 'Product created successfully.');
+        return redirect()->route('article.show', ['article' => $product->id])->with('success', 'Product created successfully.');
     }
     
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  Product $article
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $article)
     {
-        //
+        return view('articles.show', compact('article'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  Product $article
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $article)
     {
-        //
+        $tags = Tag::all();
+    
+        return view('articles.edit', compact('article', 'tags'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  Product $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $article)
     {
-        //
+        $mults = [];
+
+        if ($request->hasFile('mult_image')) {
+            foreach ($request->file('mult_image') as $image) {
+                $mult = $image->store('post-mult-image');
+                $mults[] = $mult;
+            }
+        }
+
+        $article->update([
+            'photo' => !empty($mults) ? json_encode($mults) : $article->photo,
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        if ($request->has('tags')) {
+            $article->tags()->sync($request->tags);
+        } else {
+            $article->tags()->detach();
+        }
+
+        return redirect()->route('article.show', ['article' => $article->id])->with('success', 'Product updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  Product $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $article)
     {
         //
     }

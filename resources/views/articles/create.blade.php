@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col my-5">
-            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">    
+            <form action="{{ route('article.store') }}" method="POST" enctype="multipart/form-data">    
                 @csrf
                 @if($errors->any())
                     <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">

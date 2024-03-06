@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('product.create')->with([
-            'branches' => Branch::where('id', '<', '2')->get(),
+            'branches' => Branch::where('id', '>', '2')->get(),
             'tags' => Tag::all(),
         ]);
     }
@@ -50,6 +50,7 @@ class ProductController extends Controller
             'photo' => json_encode($mults),
             'file' => $file,
             'title' => $request->title,
+            'author' => $request->author ?? null,
             'price' => $request->price,
             'description' => $request->description,
             'doc_number' => $request->doc_number,
@@ -90,7 +91,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $branches = Branch::where('id', '<', '2')->get();
+        $branches = Branch::where('id', '>', '2')->get();
         $tags = Tag::all();
     
         return view('product.edit', compact('product', 'branches', 'tags'));

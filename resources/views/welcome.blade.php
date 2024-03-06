@@ -15,7 +15,9 @@
             + Add Category
         </button>
         <div class="modal fade" id="categortCreate" tabindex="-1" aria-labelledby="categortCreateLabel" aria-hidden="true">
-            <x-category-create/>
+            <x-category-create>
+                {{ 1 }}
+            </x-category-create>
         </div>
         <button type="button" class="btn btn-on mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
             + Add Tag

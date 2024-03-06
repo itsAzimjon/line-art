@@ -9,7 +9,7 @@
         @csrf
             <div class="modal-body">
                 <label for="category" class="form-label">Branch category</label>
-                @foreach($categories as $category)
+                @foreach($categories->where('type', 'like', '1') as $category)
                     <div class="form-check">
                         <input {{ $branch->categories->contains($category->id) ? 'checked' : '' }} class="form-check-input" type="checkbox" name="category_id[]" value="{{ $category->id }}" id="category{{ $category->id }}">
                         <label class="form-check-label" for="category{{ $category->id }}">

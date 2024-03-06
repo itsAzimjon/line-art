@@ -3,7 +3,7 @@
 <h3 class="my-4" style="font-weight: 600">Zamin gruntining hisobiy qarshiligi</h2>
 <form id="foundationForm">
     <h4>Gruntning harakteristikasi</h4>
-    <div class="form-group">
+    <div class="form-group calc">
         <label for="phi">Ichki ishqalanish koeffitsiеnti (φ):</label>
         <input type="number" id="phi" step="0.01" value="19" required> °
 

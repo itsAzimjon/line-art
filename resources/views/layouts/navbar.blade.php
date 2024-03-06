@@ -18,10 +18,11 @@
                 <a class="{{ (Route::currentRouteName() == 'forum' ? 'active' : '') }}" href="{{ route('forum') }}">
                     <span class="icons material-symbols-outlined">forum</span>Форум
                 </a>
-            </li>
-            
+            </li>`
             <li class="li_1">
-                <a href="#"><span class="icons material-symbols-outlined">description</span>Статьи</a>
+                <a class="{{ (Route::currentRouteName() == 'price' ? 'active' : '') }}" href="{{ route('article.index') }}">
+                    <span class="icons material-symbols-outlined">description</span>Статьи
+                </a>
             </li>
             <li class="li_1">
                 <a class="{{ (Route::currentRouteName() == 'price' ? 'active' : '') }}" href="{{ route('price') }}">

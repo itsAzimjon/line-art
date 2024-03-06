@@ -38,6 +38,14 @@
                     </div>
                 </a>
                 @endforeach
+                <button type="button" style="font-size: 16px" class="btn btn-on mb-0 col-12" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    + Add Tag
+                </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <x-tag-create>
+                        {{ $category->id }}
+                    </x-tag-create>
+                </div>
             </div>
         </div>
         <x-right-side/>

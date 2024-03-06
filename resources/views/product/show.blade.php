@@ -99,7 +99,15 @@
     <div class="user_page_right d-flex  col-8">
         <div class="row img_row_left">
             <div class="col col-12">
-                <img src="{{ asset('storage/' . json_decode($product->photo)[0]) }}" alt="">
+                @if ($product->branch_id == 3)
+                    <?php
+                        $url = $product->doc_number;
+                        $videoId = str_replace('https://youtu.be/', 'https://www.youtube.com/embed/', $url);
+                    ?>
+                    <iframe width="600" height="315" src="{{ $videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                @else
+                    <img src="{{ asset('storage/' . json_decode($product->photo)[0]) }}" alt="">
+                @endif
             </div>
         </div>  
         <div class="row img_row_right">
@@ -166,7 +174,6 @@
         </ul> --}}
     </div>
 </div>
-
 <div class="row book_info">
     <div class="col col-12 d-flex justify-content-between">
         <p class="active">Похожие файлы</p>

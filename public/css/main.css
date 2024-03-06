@@ -62,7 +62,7 @@ nav .form{
 .form .ul_1 .li_1{
     line-height: 50px;
     font-size: 18px;
-    margin:0 20px;
+    margin:5px 12px;
     font-weight: 500;
     cursor: pointer;
     position: relative;
@@ -1087,10 +1087,10 @@ text-align: center;
 }
 
 /*calculation*/
-.form-group label{
+.calc label{
     width: 70%
 }
 
-.form-group input{
+.calc input{
     width: 10%
 }

@@ -62,9 +62,10 @@
                     <div class="col-12">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Tags</label>
-                            <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
+                            <input type="text" id="tag-search" class="form-control" placeholder="Search tags...">
+                            <div id="tag-list" class="@error('welcome.title')border border-danger rounded-3 @enderror">
                                 @foreach($tags as $tag)
-                                    <div class="form-check">
+                                    <div class="form-check tag-item">
                                         <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag{{ $tag->id }}">
                                         <label class="form-check-label" for="tag{{ $tag->id }}">
                                             {{ $tag->name }}
@@ -74,6 +75,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-12">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Title</label>
@@ -132,6 +134,27 @@
     </div>
 </div>
 <script>
+    // search tags
+    document.addEventListener('DOMContentLoaded', function() {
+        const tagSearchInput = document.getElementById('tag-search');
+        const tagList = document.getElementById('tag-list');
+
+        tagSearchInput.addEventListener('input', function() {
+        const searchTerm = tagSearchInput.value.trim().toLowerCase();
+        const tagItems = tagList.querySelectorAll('.tag-item');
+
+        tagItems.forEach(function(tagItem) {
+            const tagName = tagItem.querySelector('.form-check-label').textContent.trim().toLowerCase();
+                if (tagName.includes(searchTerm)) {
+                    tagItem.style.display = 'block';
+                } else {
+                    tagItem.style.display = 'none';
+                }
+            });
+        });
+    });
+    //////
+
     var maxImages = 4;
     var imageForms = document.getElementById('image-forms');
     var addImageButton = document.getElementById('add-image');

@@ -48,6 +48,16 @@
                     </div>
                 </a>
             @endforeach
+            @can('admin')
+                <button type="button" style="font-size: 16px" class="btn btn-on mb-0 col-12" data-bs-toggle="modal" data-bs-target="#categortCreate">
+                    + Add Category
+                </button>
+                <div class="modal fade" id="categortCreate" tabindex="-1" aria-labelledby="categortCreateLabel" aria-hidden="true">
+                    <x-category-create>
+                        {{ 2 }}
+                    </x-category-create>
+                </div>
+            @endcan
         </div>
     </div>
     <x-right-side/>

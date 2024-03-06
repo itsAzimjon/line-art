@@ -10,6 +10,7 @@
             <div class="modal-body">
                 <label for="categoryName" class="form-label mt-3">Category name</label>
                 <input required type="text" class="form-control" id="categoryName" name="name">
+                <input type="hidden" class="form-control" id="categoryName" name="type" value="{{ $slot }}">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
