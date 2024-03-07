@@ -265,6 +265,17 @@
                     <p>{{ $c->body }}</p>
                 </div>
             </div>
+            @if (auth()->check())
+                @if (auth()->user()->id == $c->user->id || auth()->user()->role_id == 1)
+                <form action="{{ route('comment.destroy', ['comment' => $c->id ])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn fw-bold btn-sm btn-outline-danger mx-5">
+                        Удалить
+                    </button>
+                </form>
+                @endif
+            @endif
         @endforeach
     </div>
 </div>

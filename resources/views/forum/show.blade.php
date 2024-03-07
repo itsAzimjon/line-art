@@ -19,18 +19,18 @@
                     @endif
                     <div class="user_name">
                         <h6>{{ $forum->user->name}}</h6>
-                        <p>{{ $forum->user->job}}</p>
+                        <p>{{ \Carbon\Carbon::parse($forum->created_at)->locale('uz')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                     </div>
                     <div class="user_lavel">
-                        <h6>{{ $forum->user->experience}} год стажа</h6>
+                        <h6>{{ $forum->user->job}}</h6>
+                        {{-- <h6>{{ $forum->user->experience}} год стажа</h6> --}}
                     </div>
                     <div class="user_date">
-                        <p>{{ \Carbon\Carbon::parse($forum->created_at)->locale('uz')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                     </div>
                 </div>
                 <div class="card_center mx-1 py-3">
-                    <h3 class="pb-2">{{ $forum->title}}</h3>
-                    <p>{!!nl2br (__($forum->description)) !!}</p>
+                    <h3 class="pb-2">{{ strip_tags($forum->title) }}</h3>
+                    <p>{!! nl2br(strip_tags($forum->description)) !!}</p>
                 </div>
                 <div class="card_top mt-1">
                     <div class="card_top_content">
@@ -71,7 +71,7 @@
             @can('user', $forum,)
                 <div class="my-3 d-flex">
                     <a href="{{ route('forum.edit', ['forum' => $forum->id ])}}" class="btn fw-bold btn-sm btn-outline-warning">
-                        Редактировать
+                        Изменить
                     </a>
                     <form id="deleteForm" action="{{ route('forum.destroy', ['forum' => $forum->id ])}}" method="POST">
                     @csrf
@@ -154,9 +154,9 @@
                                         <h6>{{ $reply->user->name }}</h6>
                                         <p>{{ $reply->user->job }}</p>
                                     </div>
-                                    <div class="user_lavel">
+                                    {{-- <div class="user_lavel">
                                         <h6>Модератор</h6>
-                                    </div>
+                                    </div> --}}
                                     <div class="user_date m-1">
                                         <p>{{ \Carbon\Carbon::parse($reply->created_at)->locale('uz')->isoFormat('D MMMM HH:mm', 'Do MMMM HH:mm') }}</p>
                                     </div>

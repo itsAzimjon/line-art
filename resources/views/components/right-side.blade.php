@@ -17,7 +17,8 @@
             </div>
         </a>
         @endforeach
-        
+
+        <h6 class="mb-4 mt-4">Последние сообщения</h6>
         @foreach (App\Models\Forum::latest()->take(5)->get() as $forum)
             <a href="{{ route('forum.show', ['forum' => $forum->id]) }}">
                 <div class="right-inner mt-3">

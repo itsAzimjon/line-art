@@ -40,14 +40,14 @@
                         @foreach ($branches as $branch)
                             <li class="d-flex">
                                 <p class="p-2" data-cat-id="{{ $branch->id }}">{{ $branch->name }}</p>
-                                <div>
+                                <div class="float-end">
                                     <form action="{{ route('branch.destroy', ['branch' => $branch->id]) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-sm btn-outline-danger my-1 mx-2" type="submit" onclick="return confirm('Вы уверены, что хотите удалить эту ветку?')">Удалить</button>
                                     </form>                    
                                     <button type="button" class="btn btn-sm btn-outline-warning m-0 mx-2" data-bs-toggle="modal" data-bs-target="#BranchEdit{{ $branch->id }}">
-                                        edit
+                                        Изменить
                                     </button>
                                 </div>
                             </li>

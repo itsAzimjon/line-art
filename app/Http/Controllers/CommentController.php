@@ -38,6 +38,9 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        $productId = $comment->product->id;
+        
+        return redirect()->route('product.show', ['product' => $productId]);
     }
 }
