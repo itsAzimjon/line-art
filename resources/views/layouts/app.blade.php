@@ -27,13 +27,12 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid"style="padding-right: 10rem !important; padding-left: 10rem !important;">
         @include('layouts/navbar')
         <main class="py-4">
             @yield('content')
         </main>
         @include('layouts/footer')
-
     </div>
      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>

@@ -39,6 +39,10 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'mult_image' => 'required|array|min:1',
+        ]);
+
         $mults = [];
 
         if ($request->hasFile('mult_image')) {
@@ -53,6 +57,7 @@ class ArticleController extends Controller
             'photo' => json_encode($mults),
             'title' => $request->title,
             'description' => $request->description,
+            'author' => $request->author ?? null,
         ]);
 
         if ($request->has('tags')) {
@@ -111,6 +116,7 @@ class ArticleController extends Controller
             'photo' => !empty($mults) ? json_encode($mults) : $article->photo,
             'title' => $request->title,
             'description' => $request->description,
+            'author' => $request->author,
         ]);
 
         if ($request->has('tags')) {

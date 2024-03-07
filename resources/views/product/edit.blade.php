@@ -84,7 +84,14 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="author" class="form-control-label">Author</label>
+                            <div class="@error('author')border border-danger rounded-3 @enderror">
+                                <textarea class="form-control" type="text" name="author">{{ $product->author }}</textarea>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Price</label>

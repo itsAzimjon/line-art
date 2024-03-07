@@ -4,7 +4,7 @@
         @can('admin')
             <a href="{{ route('na.create',  ['role' =>'2'])}}" class="btn btn-primary mt-2">+Add News</a>
         @endcan
-        @foreach (App\Models\Product::latest()->where('branch_id', 'like', '2')->take(5)->get() as $news)
+        @foreach (App\Models\Product::latest()->where('branch_id', 'like', '2')->take(3)->get() as $news)
         <a href="{{ route('article.show', ['article' => $news->id])}}" class="card text-bg-dark" style="height: 100px">
             <div style="position: relative;">
                 <img src="{{ asset('storage/' . json_decode($news->photo)[0]) }}" class="card-img" style="height: 100px; object-fit: cover;" alt="...">

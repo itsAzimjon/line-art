@@ -52,7 +52,7 @@
         <label for="k">gruntning mustahkamlik ko’satkichlari(k):</label>
         <input type="number" id="k" step="0.01" value="1" required><br>
     </div>
-    <button class="btn btn-on fw-bold px-5 my-4" type="button" onclick="calculateBearingCapacity()">Calculate</button>
+    <button class="btn btn-on fw-bold px-5 my-4" type="button" onclick="calculateBearingCapacity()">Hisoblash</button>
 </form>
 
 <p id="result"></p>
@@ -137,23 +137,23 @@
             Mc * c
         );
         const calculationSteps =
-        `<p><strong>zamin gruntning hisobiy qarshiligini aniqlash</strong></p>` +
+        `<p><strong>Zamin gruntning hisobiy qarshiligini aniqlash</strong></p>` +
             `<p> Hisob QMQ 2.02.01-98, 7-ifoda orqali aniqlanadi.</p>` +
             `<p><strong>Dastlabki ma'lumotlar:</strong></p>` +
             `<ul>` +
             `<li>φ = ${phi}°; c = ${c} т/м²; γс1 = ${gammaC1}; γс2 = ${gammaC2}; k = ${k}; γII = ${gammaII} т/м³; γII′ = ${gammaII_prime} т/м³; d1 = ${d1} м; d′ = ${db} м; b = ${b} м.</li>` +
             `</ul>` +
-            `<p><strong>Расчет:</strong></p>` +
+            `<p><strong>Hisoblash:</strong></p>` +
             `<ul>` +
             `<li>4-jadval bo’yicha qabul qilinadigan koeffitsiеnt:</li>` +
             `<li>Mγ = ${Mgamma}, Mq = ${Mq}, Mc = ${Mc}</li>` +
-            `<li>Условие d′ = ${db} м < 2 м выполняется, b = ${b} м < 10 м, следовательно kz = ${kz}.</li>` +
+            `<li>Vaziyat d′ = ${db} м < 2 м amalga oshirildi, b = ${b} м < 10 м, shuning uchun kz = ${kz}.</li>` +
             `<li>Hisob QMQ 2.02.01-98, 7-ifoda orqali aniqlanadi:</li>` +
             `</ul>` +
             `<p>R = γс1 ⋅ γс2 / k ⋅ (Mγ ⋅ k ⋅ kz ⋅ b ⋅ γII + Mq ⋅ d1 ⋅ γII′ + (Mq − 1) ⋅ d′ ⋅ γII′ + Mc ⋅ c)</p>` +
             `<p>R = (${gammaC1} ⋅ ${gammaC2}) / ${k} ⋅ (${Mgamma} ⋅ ${k} ⋅ ${kz} ⋅ ${b} ⋅ ${gammaII} + ${Mq} ⋅ ${d1} ⋅ ${gammaII_prime} + (${Mq} − 1) ⋅ ${db} ⋅ ${gammaII_prime} + ${Mc} ⋅ ${c})</p>` +
             `<p>R = ${bearingCapacity.toFixed(2)} т/м²</p>` +
-            `<p><strong>Вывод:</strong></p>` +
+            `<p><strong>Xulosa:</strong></p>` +
             `<p>Gruntning hisobiy qarshiligi: R = ${bearingCapacity.toFixed(2)} т/м².</p>`;
         document.getElementById('result').innerHTML =
             `<br>${calculationSteps}`;

@@ -24,9 +24,9 @@
                     </div>
                 @endif
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 my-1">
                         <div class="form-group">
-                            <label for="welcome-title" class="form-control-label">Category</label>
+                            <label for="welcome-title" class="form-control-label">Branch</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
                                 <select name="branch_id" aria-label="Default select example" class="form-select">
                                     @foreach ($branches as $branch)
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-image" class="form-control-label">File</label>
                             <div class="@error('image')border border-danger rounded-3 @enderror">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-12">
+                    {{-- <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Category</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </div> --}}
-                    <div class="col-12">
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Tags</label>
                             <input type="text" id="tag-search" class="form-control" placeholder="Search tags...">
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-12">
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Title</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
@@ -87,7 +87,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
+                    
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="title" class="form-control-label">Description</label>
                             <div class="@error('title')border border-danger rounded-3 @enderror">
@@ -96,7 +97,19 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 my-1">
+                        <div class="form-group">
+                            <label for="welcome-author" class="form-control-label">Author</label>
+                            <div class="@error('welcome.author')border border-danger rounded-3 @enderror">
+                                <textarea class="form-control"  type="text" name="author"></textarea>
+                                    @error('author')
+                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                    @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Price</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
@@ -107,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="title" class="form-control-label">Document Number</label>
                             <div class="@error('title')border border-danger rounded-3 @enderror">
@@ -126,8 +139,7 @@
                 <button type="button" id="add-image" class="btn btn-secondary">Rasm qo‘shish</button>
             
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn bg-gradient-secondary  btn-md mt-4 mb-4 mx-3" data-bs-dismiss="modal">Yopish</button>
-                    <button type="submit" class="btn bg-primary text-light text-w btn-md mt-4 mb-4">Saqlash</button>
+                    <button type="submit" class="btn btn-lg bg-primary text-light text-w btn-md mt-4 mb-4">Saqlash</button>
                 </div>
             </form>
         </div>

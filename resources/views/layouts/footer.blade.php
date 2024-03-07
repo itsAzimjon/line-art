@@ -12,7 +12,7 @@
             <ul class="col-md-3 text-body-secondary footer_ul">
                 <li class="nav-item"><a class="text-dark" href="{{ route('forum') }}">Форум</a></li>
                 <li class="nav-item"> <a class="text-dark" href="{{ route('home') }}">Библиотека</a></li> 
-                <li class="nav-item">Статьи</li>
+                <li class="nav-item"><a class="text-dark" href="{{ route('article.index') }}">Статьи</a></li>
             </ul>
         </div>
         <div class="col columns col-3">

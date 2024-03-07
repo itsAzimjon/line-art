@@ -129,6 +129,11 @@
     <div class="col col-8">
         <p class="title_p">{!!nl2br (__($product->description)) !!}</p>
     </div>
+    <div class="col col-8">
+        @if (!empty($product->author))
+            <p class="title_p">Автор: {!!nl2br (__($product->author)) !!}</p>
+        @endif
+    </div>
     <div class="col col-4">
         <h5>Метки</h5>
         @foreach ($product->tags as $tag)

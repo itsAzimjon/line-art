@@ -20,7 +20,7 @@
                 </a>
             </li>`
             <li class="li_1">
-                <a class="{{ (Route::currentRouteName() == 'price' ? 'active' : '') }}" href="{{ route('article.index') }}">
+                <a class="{{ (Route::currentRouteName() == 'article.index' ? 'active' : '') }}" href="{{ route('article.index') }}">
                     <span class="icons material-symbols-outlined">description</span>Статьи
                 </a>
             </li>

@@ -26,7 +26,7 @@
                 @endif
                 <div class="row">
                     <input type="hidden" value="1" name="branch_id">
-                    <div class="col-12">
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Tag</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Mavzu</label>
                             <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
@@ -52,11 +52,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="title" class="form-control-label">Tavsif</label>
                             <div class="@error('title')border border-danger rounded-3 @enderror">
                                 <textarea class="form-control"  type="text"  name="description">{{ $article->description }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 my-1 my-1">
+                        <div class="form-group">
+                            <label for="author" class="form-control-label">Muallif</label>
+                            <div class="@error('author')border border-danger rounded-3 @enderror">
+                                <textarea class="form-control"  type="text" name="author"></textarea>
                             </div>
                         </div>
                     </div>

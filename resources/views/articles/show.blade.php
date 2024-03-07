@@ -1,14 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<div class="row page3_cards">
-    <div class="user_page_right d-flex  col-12">
-        <div class="row ">
-            <div class=" col-12">
-                <img style="width: 1100px; height:300px; object-fit:cover" src="{{ asset('storage/' . json_decode($article->photo)[0]) }}" alt="">
-            </div>
-        </div>  
-    </div>
-</div>
 <div class="user_page_left pb-3 col-12">
     @can('admin')
         <div class="d-flex">
@@ -20,20 +11,19 @@
             </form>
         </div>
     @endcan
-    <div class="user_title mt-3 pt-0">
+    <div class="user_title my-4 pt-0">
         <h1>{{ $article->title }}</h1>
     </div>
 </div>
 <div class="row block-center">
     <div class="col col-8">
-        <p class="title_p">{!!nl2br (__($article->description)) !!}</p>
-        <div class="row ">
-            @foreach (array_slice(json_decode($article->photo), 1) as $image)
-                <div class="col-6">
-                    <img class="w-100" src="{{ asset('storage/' . $image) }}" alt="">
+        <div class="user_page_right d-flex  col-12">
+            <div class="row ">
+                <div class=" col-8">
+                    <img style="width: 750px; height:400px; object-fit:cover" src="{{ asset('storage/' . json_decode($article->photo)[0]) }}" alt="">
                 </div>
-            @endforeach
-        </div>  
+            </div>  
+        </div> 
     </div>
     <div class="col col-4">
         <div class="user_btn d-flex mb-3">            
@@ -98,6 +88,21 @@
         @foreach ($article->tags as $tag)
             <button class="btn metka_btn border">{{ $tag->name }}</button>
         @endforeach
+        <hr>
+        @if (!empty($article->author))
+            <h5 class="mt-2">Автор</h5>
+            <b class="p-2">{!!nl2br (__($article->author)) !!} </b> 
+        @endif
+    </div>
+    <div class="col-12">
+        <p class="title_p">{!!nl2br (__($article->description)) !!}</p>
+        <div class="row ">
+            @foreach (array_slice(json_decode($article->photo), 1) as $image)
+                <div class="col-6 my-3">
+                    <img class="w-100" src="{{ asset('storage/' . $image) }}" alt="">
+                </div>
+            @endforeach
+        </div> 
     </div>
 </div>
 @endsection

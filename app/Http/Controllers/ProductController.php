@@ -34,6 +34,11 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {        
+        $request->validate([
+            'mult_image' => 'required|array|min:1',
+            'file' => 'required|file',
+        ]);
+
         $mults = [];
 
         if ($request->hasFile('mult_image')) {
@@ -67,7 +72,7 @@ class ProductController extends Controller
     
     public function show(Product $product)
     {
-        $views = $product->views;
+        $views = $product->view;
         $views++;
         $product->update([
             'view' => $views
@@ -116,6 +121,7 @@ class ProductController extends Controller
             'photo' => !empty($mults) ? json_encode($mults) : $product->photo,
             'file' => $file ?? $product->file,
             'title' => $request->title,
+            'author' => $request->author,
             'price' => $request->price,
             'description' => $request->description,
             'doc_number' => $request->doc_number,
