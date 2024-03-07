@@ -54,6 +54,7 @@ class ArticleController extends Controller
 
         $product = Product::create([
             'branch_id' => $request->branch_id,
+//            'owner' => auth()->name,
             'photo' => json_encode($mults),
             'title' => $request->title,
             'description' => $request->description,
