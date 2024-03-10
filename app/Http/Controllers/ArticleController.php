@@ -42,6 +42,7 @@ class ArticleController extends Controller
     {
         $request->validate([
             'mult_image' => 'required|array|min:1',
+            'mult_image.*' => 'image|max:2048',
         ]);
 
         $mults = [];
@@ -55,7 +56,7 @@ class ArticleController extends Controller
 
         $product = Product::create([
             'branch_id' => $request->branch_id,
-            'owner' => auth()->name,
+            'owner' => auth()->user()->name,
             'photo' => json_encode($mults),
             'title' => $request->title,
             'description' => $request->description,
