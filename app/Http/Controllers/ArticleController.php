@@ -92,8 +92,8 @@ class ArticleController extends Controller
      */
     public function edit(Product $article)
     {
-        $tags = Tag::all();
-    
+        $branches = Branch::where('id', ' ', '2')->get();      
+        $tags = $branches->flatMap->categories->flatMap->tags->unique('id');    
         return view('articles.edit', compact('article', 'tags'));
     }
 
