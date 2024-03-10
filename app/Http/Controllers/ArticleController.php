@@ -44,7 +44,7 @@ class ArticleController extends Controller
         $request->validate([
             'mult_image' => 'required|array|min:1',
         ]);
-
+        
         $mults = [];
 
         if ($request->hasFile('mult_image')) {
