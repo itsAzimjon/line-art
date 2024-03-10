@@ -60,6 +60,7 @@ class ArticleController extends Controller
             'photo' => json_encode($mults),
             'title' => $request->title,
             'description' => $request->description,
+            'doc_number' => $request->doc,
             'author' => $request->author ?? null,
         ]);
 

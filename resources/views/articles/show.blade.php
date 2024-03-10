@@ -35,6 +35,8 @@
                     </div>
                 @endforeach
             </div> 
+            <p class="title_p">{!!nl2br (__($article->doc_number)) !!}</p>
+
         </div>
         <hr>
         <div class="row d-flex">
@@ -107,7 +109,7 @@
             @endif
             <div class="col-4">
                 <h5 class="mt-2">От</h5>
-                <b class="p-2">{!!nl2br (__($article->author)) !!} </b>
+                <b class="p-2">{!!nl2br (__($article->owner)) !!} </b>
     
             </div>
         </div>

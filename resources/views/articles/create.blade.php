@@ -54,9 +54,17 @@
                     </div>
                     <div class="col-12 my-1">
                         <div class="form-group">
-                            <label for="title" class="form-control-label">Tavsif</label>
+                            <label for="title" class="form-control-label">Tavsif-1</label>
                             <div class="@error('title')border border-danger rounded-3 @enderror">
                                 <textarea class="form-control"  type="text" name="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 my-1">
+                        <div class="form-group">
+                            <label for="title" class="form-control-label">Tavsif-2</label>
+                            <div class="@error('title')border border-danger rounded-3 @enderror">
+                                <textarea class="form-control"  type="text" name="doc"></textarea>
                             </div>
                         </div>
                     </div>

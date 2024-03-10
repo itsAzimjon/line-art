@@ -13,7 +13,7 @@
     <div class="cls_block">
         <h6 class="mt-5 mb-3">Топ статьи и файлы</h6>
       
-        @foreach (App\Models\Product::orderByDesc('view')->take(5)->get() as $product)
+        @foreach (App\Models\Product::where('branch_id', '<', 3)->orderByDesc('view')->take(5)->get() as $product)
             <a href="{{ route('product.show', ['product' => $product->id]) }}">
                 <div class="cls_block-text mt-3 mb-3">
                     <div class="block_left">

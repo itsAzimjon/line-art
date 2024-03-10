@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label for="author" class="form-control-label">Muallif</label>
                             <div class="@error('author')border border-danger rounded-3 @enderror">
-                                <textarea class="form-control"  type="text" name="author"></textarea>
+                                <textarea class="form-control"  type="text" name="author">{{ $article->author }}</textarea>
                             </div>
                         </div>
                     </div>
