@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class ArticleController extends Controller
      */
     public function createTwo($role)
     {
-        $tags = Tag::all();
+        $branches = Branch::where('id', ' ', '2')->get();      
+        $tags = $branches->flatMap->categories->flatMap->tags->unique('id');  
         return view('articles.create', compact(['tags', 'role']));
     }
 
@@ -54,7 +56,7 @@ class ArticleController extends Controller
 
         $product = Product::create([
             'branch_id' => $request->branch_id,
-//            'owner' => auth()->name,
+            'owner' => auth()->user()->name,
             'photo' => json_encode($mults),
             'title' => $request->title,
             'description' => $request->description,

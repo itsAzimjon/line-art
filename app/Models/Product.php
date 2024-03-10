@@ -16,6 +16,7 @@ class Product extends Model
         'file',
         'title',
         'author',
+        'owner',
         'price',
         'description',
         'downloads',

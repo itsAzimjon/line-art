@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->text('author')->nullable();
+            $table->text('owner')->nullable();
             $table->integer('view')->default(0);
             $table->string('doc_number')->nullable();
             $table->timestamps();

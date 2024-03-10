@@ -26,10 +26,9 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('product.create')->with([
-            'branches' => Branch::where('id', '>', '2')->get(),
-            'tags' => Tag::all(),
-        ]);
+        $branches = Branch::where('id', '>', '2')->get();      
+        $tags = $branches->flatMap->categories->flatMap->tags->unique('id');  
+        return view('product.create', compact(['tags', 'branches']));
     }
 
     public function store(Request $request)
