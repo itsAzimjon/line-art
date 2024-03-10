@@ -40,6 +40,10 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'mult_image' => 'required|array|min:1',
+        ]);
+
         $mults = [];
 
         if ($request->hasFile('mult_image')) {
@@ -48,10 +52,6 @@ class ArticleController extends Controller
                 $mults[] = $mult;
             }
         }
-
-        $request->validate([
-            json_encode($mults) => 'required|array|min:1',
-        ]);
 
         $product = Product::create([
             'branch_id' => $request->branch_id,
