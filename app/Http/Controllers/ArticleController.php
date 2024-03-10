@@ -17,7 +17,6 @@ class ArticleController extends Controller
     public function index()
     {
         $products = Product::where('branch_id', 'like', '1')->orderByDesc('created_at')->get();
-
         return view('articles.index', compact('products'));
     }
 
@@ -41,10 +40,6 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'mult_image' => 'required|array|min:1',
-        ]);
-        
         $mults = [];
 
         if ($request->hasFile('mult_image')) {
@@ -54,9 +49,13 @@ class ArticleController extends Controller
             }
         }
 
+        $request->validate([
+            json_encode($mults) => 'required|array|min:1',
+        ]);
+
         $product = Product::create([
             'branch_id' => $request->branch_id,
-            'owner' => auth()->user()->name,
+            'owner' => auth()->name,
             'photo' => json_encode($mults),
             'title' => $request->title,
             'description' => $request->description,
