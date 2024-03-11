@@ -34,5 +34,7 @@
                 </div>
             </a>
         @endforeach
+        <small>Реклама</small>
+        <img class="w-100" src="{{ asset('images/0114-ezgif.com-video-to-gif-converter.gif')}}" alt="">
     </div>
 </div>
