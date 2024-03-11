@@ -261,8 +261,8 @@
         </div>
     </div>
 
-
-    <div class="col col-3 cls_p3">
+<x-right-side/>
+    {{-- <div class="col col-3 cls_p3">
         <div class="right-header">
             <div class="comet_users p-3 mt-1 mb-2">
                 <div class="coment_users_block">
@@ -349,5 +349,5 @@
                 </div>
             <!-- nusxa olinadi -->
         </div>
-    </div>
+    </div> --}}
 @endsection
