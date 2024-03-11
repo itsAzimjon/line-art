@@ -7,15 +7,9 @@
         <form class="row g-3" action="{{ route('forum.store') }}" method="POST">
         @csrf
             <h2 class="py-3">Задайте публичный вопрос</h2>
-            <div class="col-12">
-                <label for="title" class="fs-5 form-label">Категория</label>
-                <select required name="tag_id" class="form-select" aria-label="Default select example">
-                    <option disabled selected>Открыть это меню выбора</option>
-                    @foreach ($tags as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+            
+            <input disabled class="form-control" value="{{ $tag->name}}"></option>
+            <input name="tag" type="hidden" value="{{ $tag->id}}"></option>
             <div class="col-12">
                 <label for="title" class="fs-5 form-label">Заголовок</label>
                 <textarea required name="title" class="form-control" placeholder="Задайте публичный вопрос" id="floatingTextarea2" style="height: 100px"></textarea>

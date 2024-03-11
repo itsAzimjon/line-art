@@ -9,8 +9,8 @@
             <a href="#">{{ $tag->category->name }} <svg width="5" height="7" viewBox="0 0 5 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.128 0.86H1.508L4.412 3.608L1.508 6.368H0.128L3.032 3.608L0.128 0.86Z" fill="#444750"/></svg></a>
             <a href="#">{{ $tag->name }} </a>
         </div>
-
-        <a href="{{ route('forum.create')}}" class="fw-semibold btn-on btn-lg btn ml-4 col-12" style="font-size: 14px">Задавать вопрос</a>
+        
+        <a href="{{ route('forum.create.id', ['tag' => $tag->id])}}" class="fw-semibold btn-on btn-lg btn ml-4 col-12" style="font-size: 14px">Задавать вопрос</a>
         
         <h2 class="mb-4 fw-semibold">{{ $tag->name }}</h2>
         <div class="cls_card">

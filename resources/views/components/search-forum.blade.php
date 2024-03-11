@@ -2,11 +2,11 @@
     <div class="col">
         <div class="row">
             @if (auth()->check() && auth()->user()->photo)
-            <div class="col-1">
+                <div class="col-1">
                     <img class="comment_user_img cls_page3" src="{{ asset('storage/' . auth()->user()->photo)}}">
                 </div>
             @endif
-            <form class="d-flex" action="{{ route('filter.forum') }}" method="GET">
+            <form class="col-11 d-flex" action="{{ route('filter.forum') }}" method="GET">
                 <div class="col-8 cls_p3_input">
                     <div class="input-group">
                         <input name="forum" type="text" class="form-control" placeholder="Поиск по форумам">

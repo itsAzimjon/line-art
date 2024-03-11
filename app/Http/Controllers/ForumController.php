@@ -11,10 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class ForumController extends Controller
 { 
     
-    public function create()
+    public function forumCreateId(Tag $tag)
     {
-        $tags = Tag::all();
-        return view('forum.create', compact('tags'));
+        return view('forum.create', compact(['tag']));
     }
 
     public function store(Request $request)
@@ -26,14 +25,13 @@ class ForumController extends Controller
         }
 
         $validatedData = $request->validate([
-            'tag_id' => 'required|exists:tags,id', 
             'title' => 'required|string', 
             'description' => 'required|string', 
         ]);
 
         $forum = Forum::create([
             'user_id' => $user->id,
-            'tag_id' => $validatedData['tag_id'],
+            'tag_id' => $request->tag,
             'title' => $validatedData['title'],
             'description' => $validatedData['description'],
             'image' => '0',
