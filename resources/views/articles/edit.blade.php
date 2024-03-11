@@ -54,20 +54,28 @@
                     </div>
                     <div class="col-12 my-1">
                         <div class="form-group">
-                            <label for="title" class="form-control-label">Tavsif</label>
+                            <label for="title" class="form-control-label">Tavsif-1</label>
                             <div class="@error('title')border border-danger rounded-3 @enderror">
                                 <textarea class="form-control"  type="text"  name="description">{{ $article->description }}</textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 my-1 my-1">
+                    <div class="col-12 my-1">
+                        <div class="form-group">
+                            <label for="title" class="form-control-label">Tavsif-2</label>
+                            <div class="@error('title')border border-danger rounded-3 @enderror">
+                                <textarea class="form-control"  type="text" name="doc">{{ $article->doc_number }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="col-12 my-1 my-1">
                         <div class="form-group">
                             <label for="author" class="form-control-label">Muallif</label>
                             <div class="@error('author')border border-danger rounded-3 @enderror">
                                 <textarea class="form-control"  type="text" name="author">{{ $article->author }}</textarea>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div id="image-forms" class="my-4 form-group"> 
                     <div class="image-form">

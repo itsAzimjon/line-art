@@ -6,9 +6,19 @@ use App\Models\Branch;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('content-editor')) {
+                return $next($request);
+            }
+            abort(403, 'Unauthorized action.');
+        })->only(['edit', 'store', 'update', 'create', 'destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +37,7 @@ class ArticleController extends Controller
      */
     public function createTwo($role)
     {
-        $branches = Branch::where('id', ' ', '2')->get();      
+        $branches = Branch::where('id', '>', '2')->get();      
         $tags = $branches->flatMap->categories->flatMap->tags->unique('id');  
         return view('articles.create', compact(['tags', 'role']));
     }
@@ -93,7 +103,7 @@ class ArticleController extends Controller
      */
     public function edit(Product $article)
     {
-        $branches = Branch::where('id', ' ', '2')->get();      
+        $branches = Branch::where('id', '>', '2')->get();      
         $tags = $branches->flatMap->categories->flatMap->tags->unique('id');    
         return view('articles.edit', compact('article', 'tags'));
     }
@@ -120,7 +130,8 @@ class ArticleController extends Controller
             'photo' => !empty($mults) ? json_encode($mults) : $article->photo,
             'title' => $request->title,
             'description' => $request->description,
-            'author' => $request->author,
+            //'author' => $request->author,
+            'doc_number' => $request->doc,
         ]);
 
         if ($request->has('tags')) {

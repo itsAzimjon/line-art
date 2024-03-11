@@ -179,7 +179,7 @@
                                             </svg> Ответить
                                         </button>
                                         @if (auth()->check())
-                                            @if (auth()->user()->id == $reply->user->id || auth()->user()->role_id == 1)
+                                            @if (auth()->user()->id == $reply->user->id || auth()->user()->role_id == 1 || auth()->user()->role_id == 3)
                                             <form action="{{ route('reply.destroy', ['reply' => $reply->id ])}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -239,7 +239,7 @@
                                             <div class="d-flex">
                                                 <p><span class="user_nick"></span>{!!nl2br (__($r2r->comment)) !!}</p>
                                                 @if (auth()->check())
-                                                    @if (auth()->user()->id == $reply->user->id || auth()->user()->role_id == 1)
+                                                    @if (auth()->user()->id == $reply->user->id || auth()->user()->role_id == 1 || auth()->user()->role_id == 3)
                                                         <form action="{{ route('replytoreply.destroy', ['replytoreply' => $r2r->id ])}}" method="POST">
                                                             @csrf
                                                             @method('DELETE')

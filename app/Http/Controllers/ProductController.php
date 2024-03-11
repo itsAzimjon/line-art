@@ -9,9 +9,20 @@ use App\Models\Product;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('content-editor')) {
+                return $next($request);
+            }
+            abort(403, 'Unauthorized action.');
+        })->only(['edit', 'store', 'update', 'create', 'destroy']);
+    }
+    
     public function forumcomp()
     {
         $products = Product::all();

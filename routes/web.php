@@ -41,6 +41,8 @@ Route::post('/product/{product}/buy', [DownloadController::class, 'buy'])->name(
 
 Route::get('/news&article/create/{role}', [ArticleController::class, 'createTwo'])->name('na.create');
 
+Route::get('/user-edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user-update/{user}', [UserController::class, 'update'])->name('user.update');
 
 Route::middleware('can:suprame')->group(function () {
     Route::get('/admin', [UserController::class, 'admin'])->name('admin');

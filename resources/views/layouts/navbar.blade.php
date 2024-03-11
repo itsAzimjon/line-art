@@ -44,9 +44,6 @@
         <ul class="registr">
             <li><a href="{{ route('downloads')}}"><span class="material-symbols-outlined">download</span></a></li>
             <li><a href="{{ route('notification') }}"><span class="material-symbols-outlined">notifications</span></a></li>
-            @if (auth()->check() && auth()->user()->photo)
-                <li><a href="#"><img class="user_img" src="{{ asset('storage/' . auth()->user()->photo) }}"></a></li>
-            @endif
             @guest
                 @if (Route::has('login'))
                     <li class="nav-item">
@@ -55,13 +52,15 @@
                 @endif
             @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <span class="material-symbols-outlined">account_circle</span>
-                    </a>
-
+                    @if (auth()->check() && auth()->user()->photo)
+                        <a id="navbarDropdown" class="nav-link dropown-toggle"  role="button" data-bs-toggle="dropdown"><img class="user_img" src="{{ asset('storage/' . auth()->user()->photo) }}"></a>
+                    @else
+                        <a id="navbarDropdown" class="nav-link dropown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <span class="material-symbols-outlined">account_circle</span>
+                        </a>
+                    @endif
                     <div class="mt-3 dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <p class="dropdown-item">{{ Auth::user()->name }}</p>
-                        <p class="dropdown-item">Кредит: {{auth()->user()->credit}}</p>
+                        <p class="dropdown-item"><a class="text-dark" href="{{ route('user.edit', ['user' => auth()->user()->id])}}">{{ Auth::user()->name }}</a></p>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

@@ -68,14 +68,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 my-1">
+                    {{-- <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="author" class="form-control-label">Muallif</label>
                             <div class="@error('author')border border-danger rounded-3 @enderror">
                                 <textarea class="form-control"  type="text" name="author"></textarea>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div id="image-forms" class="my-4 form-group"> 
                     <div class="image-form">

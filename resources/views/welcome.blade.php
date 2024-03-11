@@ -1,8 +1,15 @@
 @extends('layouts.app')
 @section('content')
     <div class="main">
-        <h1>Находите и исследуйте файлы и книги вашего направления</h1>
-        <h2>Исследуйте, устанавливайте, используйте и изменяйте тысячи файлов и строк.</h2>
+        <div class="row">
+            <div class="col-6">
+                <h1>Находите и исследуйте файлы и книги вашего направления</h1>
+                <h2>Исследуйте, устанавливайте, используйте и изменяйте тысячи файлов и строк.</h2>
+            </div>
+            <div class="col">
+                <img class="main-img" src="{{ asset('images/arch.png')}}" alt="">
+            </div>
+        </div>
     </div>
     @can('admin')   
         <button type="button" class="btn btn-on mb-0" data-bs-toggle="modal" data-bs-target="#Branch">
@@ -25,6 +32,8 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <x-tag-create :categories="$categories" />
         </div>
+    @endcan
+    @can('content-editor')   
         <a href="{{ route('product.create')}}" class="btn btn-primary mb-0">
             + Add Product
         </a>

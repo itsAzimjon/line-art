@@ -105,7 +105,7 @@
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="title" class="form-control-label">Document Number</label>
+                            <label for="title" class="form-control-label">Video Link</label>
                             <div class="@error('title')border border-danger rounded-3 @enderror">
                                 <textarea class="form-control"  type="number" name="doc_number">{{ $product->doc_number }}</textarea>
                             </div>

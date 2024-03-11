@@ -173,7 +173,6 @@ nav .registr li .user_img{
 /* ####################################### */
 
 .main{
-    width: 500px;
     padding: 70px 0;
 }
 .main h1{
@@ -188,6 +187,12 @@ nav .registr li .user_img{
     font-weight: 400;
 }
 
+.main-img{
+    width: 350px;
+    position: absolute;
+    top: 130px;
+    right: 200px;
+}
 
 .btn_toogle{
     text-decoration: none;

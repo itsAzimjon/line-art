@@ -2,7 +2,7 @@
 @section('content')
 <div class="row page3_cards">
     <div class="user_page_left col-4">
-        @can('admin')
+        @can('content-editor')
             <div class="d-flex">
                 <a href="{{ route('product.edit', ['product' => $product->id]) }}" class="btn btn-outline-warning">Изменит</a>
                 <form action="{{ route('product.destroy', ['product' => $product->id])}}" method="POST">

@@ -20,8 +20,8 @@
         <div class="col col-12">
             <div class="user_page_right d-flex  col-12">
                 <div class="row ">
-                    <div class="col-12 px-5 mx-5">
-                        <img style="width: 850px; height:450px; object-fit:cover" src="{{ asset('storage/' . json_decode($article->photo)[0]) }}" alt="">
+                    <div class="col-12 mx-5">
+                        <img style="width: 100%; object-fit:cover" src="{{ asset('storage/' . json_decode($article->photo)[0]) }}" alt="">
                     </div>
                 </div>  
             </div> 
@@ -31,7 +31,7 @@
             <div class="row ">
                 @foreach (array_slice(json_decode($article->photo), 1) as $image)
                     <div class="my-3">
-                        <img class="w-100" style="width: 850px; height:450px; object-fit:cover" src="{{ asset('storage/' . $image) }}" alt="">
+                        <img class="w-100" style="width: 100%; object-fit:cover" src="{{ asset('storage/' . $image) }}" alt="">
                     </div>
                 @endforeach
             </div> 
