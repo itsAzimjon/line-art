@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="main">
-        <div class="row">
+        <div class="row py-5">
             <div class="col-6">
                 <h1>Находите и исследуйте файлы и книги вашего направления</h1>
                 <h2>Исследуйте, устанавливайте, используйте и изменяйте тысячи файлов и строк.</h2>
