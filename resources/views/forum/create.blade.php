@@ -19,7 +19,7 @@
                 <textarea required name="description" class="form-control" placeholder="Введите описание вашего вопроса здесь" id="floatingTextarea2" style="height: 100px"></textarea>
             </div>
             <div class="col-12 p-0">
-                <button type="submit" class="col-12 fs-6 btn btn-on btn-lg">Отправлять</button>
+                <button type="submit" class="col-3 fs-6 btn btn-on btn-sm">Отправлять</button>
             </div>
         </form>
     </div>

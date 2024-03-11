@@ -10,7 +10,7 @@
             <a href="#">{{ $tag->name }} </a>
         </div>
         
-        <a href="{{ route('forum.create.id', ['tag' => $tag->id])}}" class="fw-semibold btn-on btn-lg btn ml-4 col-12" style="font-size: 14px">Задавать вопрос</a>
+        <a href="{{ route('forum.create.id', ['tag' => $tag->id])}}" class="fw-semibold btn-forum btn-sm btn ml-4 col-12" style="font-size: 14px">Задавать вопрос</a>
         
         <h2 class="mb-4 fw-semibold">{{ $tag->name }}</h2>
         <div class="cls_card">

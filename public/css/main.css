@@ -22,6 +22,18 @@
 }
 
 
+.btn-forum{
+    color: #30323b !important;
+    border: #F57500 1px solid;
+    color: #ffffff;
+}
+
+.btn-forum:hover{
+    background-color: #F57500;
+    color: #ffffff;
+}
+
+
 
 a{
     text-decoration: none;
@@ -607,6 +619,16 @@ main{
     height: 39px;
     font-size: 14px !important;
 }
+
+.cls4{
+    margin-top: 6px !important;
+    margin-left: -10px !important;
+    background: #4B4F5E !important;
+    height: 28px;
+    padding: 3px 8px !important;
+    font-size: 12px !important;
+}
+
 .cls3:hover{
     background: #30323b !important;
 }
@@ -756,6 +778,7 @@ main{
     margin-top: 10px;
     border-radius: 100%;
     margin-right: 10px;
+    object-fit: cover !important;
 }
 .user_name h6{
     margin-top: 5px;

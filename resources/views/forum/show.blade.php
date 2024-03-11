@@ -100,7 +100,7 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <button type="submit" class="btn border btn_sent cls3">Ответить</button>
+                                    <button type="submit" class="btn border btn-sm btn_sent cls3 cls4">Ответить</button>
                                 </div>
                             </div>    
                         </div>
@@ -212,7 +212,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col">
-                                                    <button type="submit" class="btn border mx-0 btn_sent cls3">Отвечать</button>
+                                                    <button type="submit" class="btn border mx-0 btn_sent cls3 cls4">Ответить</button>
                                                 </div>
                                             </div>    
                                         </div>
