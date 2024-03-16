@@ -32,7 +32,7 @@
                             <h3 class="fw-semibold">{{ $category->name }}</h3>
                             <div class="card_center_block">
                                 @foreach ($category->tags as $tag)
-                                    <a class="btn border mb-0 ml-0 fw-bold text-secondary" href="{{ route('tag.show', ['tag' => $tag->id])}}">{{ $tag->name }}</a>
+                                    <a class="btn border mb-0 ml-0 fw-bold text-secondary" href="{{ route('product.showpunkt', ['tag' => $tag->id, 'branch' => $branch])}}">{{ $tag->name }}</a>
                                 @endforeach
                             </div>
                         </div>

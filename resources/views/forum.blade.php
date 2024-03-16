@@ -32,12 +32,12 @@
                             <h3 class="fw-semibold">{{ $category->name }}</h3>
                             <div class="card_center_block">
                                 @foreach ($category->tags as $tag)
-                                    <a class="btn m-0 text-secondary" href="{{ route('tag.show', ['tag' => $tag->id])}}">{{ $tag->name }}</a>
+                                    <a class="btn border mb-0 ml-0 fw-bold text-secondary" href="{{ route('tag.show', ['tag' => $tag->id])}}">{{ $tag->name }}</a>
                                 @endforeach
                             </div>
                         </div>
-                        <div class="card_bottom mt-1">
-                            <p>Последнее сообщение</p>
+                        <div class="card_bottom mt-3">
+                            <p class="my-1">Последнее сообщение</p>
                             @foreach ($category->tags->take(1) as $tag)
                                 @php $latestForum = $tag->forums()->latest()->first(); @endphp
                                 @if ($latestForum)

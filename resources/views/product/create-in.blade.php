@@ -24,51 +24,30 @@
                     </div>
                 @endif
                 <div class="row">
-                    <div class="col-12 my-1">
-                        <div class="form-group">
-                            <label for="welcome-title" class="form-control-label">Branch</label>
-                            <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
-                                <select name="branch_id" id="branch_id" aria-label="Default select example" class="form-select">
-                                    @foreach ($branches as $branch)
-                                        <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                                    @endforeach
-                                </select>
+                    <input type="hidden" name="branch_id" value="{{ $branch}}">
+                    @if ($branch != 3)
+                        <div class="col-12 my-1">
+                            <div class="form-group">
+                                <label for="welcome-image" class="form-control-label">File</label>
+                                <div id="file-input-wrapper" class="@error('image')border border-danger rounded-3 @enderror">
+                                    <input required class="form-control" type="file" id="welcome-image" name="file">
+                                    @error('file')
+                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-12 my-1">
-                        <div class="form-group">
-                            <label for="welcome-image" class="form-control-label">File</label>
-                            <div id="file-input-wrapper" class="@error('image')border border-danger rounded-3 @enderror">
-                                <input required class="form-control" type="file" id="welcome-image" name="file">
-                                @error('file')
-                                    <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                    </div> 
-                    {{-- <div class="col-12 my-1">
-                        <div class="form-group">
-                            <label for="welcome-title" class="form-control-label">Category</label>
-                            <div class="@error('welcome.title')border border-danger rounded-3 @enderror">
-                                <select name="category_id" aria-label="Default select example" class="form-select">
-                                    @foreach($categories as $option)
-                                        <option value="{{ $option->id }}">{{ $option->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div> --}}
+                        </div> 
+                    @endif
                     <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Tags</label>
                             <input type="text" id="tag-search" class="form-control" placeholder="Search tags...">
                             <div id="tag-list" class="@error('welcome.title')border border-danger rounded-3 @enderror">
-                                @foreach($tags as $tag)
+                                @foreach($tags as $t)
                                     <div class="form-check tag-item">
-                                        <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag{{ $tag->id }}">
-                                        <label class="form-check-label" for="tag{{ $tag->id }}">
-                                            {{ $tag->name }}
+                                        <input class="form-check-input" {{ $t->id ==  $tag ? 'checked' : ''}} type="checkbox" name="tags[]" value="{{ $t->id }}" id="tag{{ $t->id }}">
+                                        <label class="form-check-label" for="tag{{ $t->id }}">
+                                            {{ $t->name }}
                                         </label>
                                     </div>
                                 @endforeach
@@ -108,6 +87,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-12 my-1">
                         <div class="form-group">
                             <label for="welcome-title" class="form-control-label">Price</label>
@@ -119,14 +99,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 my-1">
-                        <div class="form-group">
-                            <label for="title" class="form-control-label">Video Link</label>
-                            <div class="@error('title')border border-danger rounded-3 @enderror">
-                                <textarea class="form-control"  type="number" name="doc_number"></textarea>
+                    @if ($branch == 3)
+                        <div class="col-12 my-1">
+                            <div class="form-group">
+                                <label for="title" class="form-control-label">Video Link</label>
+                                <div class="@error('title')border border-danger rounded-3 @enderror">
+                                    <textarea class="form-control"  type="number" name="doc_number"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
                 <div id="image-forms" class="my-4 form-group"> 
                     <div class="image-form">
@@ -192,28 +174,5 @@
     });
 
     updateAddButtonState();
-
-    // coure selected remove input file
-    document.addEventListener("DOMContentLoaded", function() {
-        var branchSelect = document.getElementById('branch_id');
-        var fileInputWrapper = document.getElementById('file-input-wrapper');
-
-        function toggleFileInput() {
-            var selectedBranchValue = branchSelect.value;
-            if (selectedBranchValue === '3') {
-                fileInputWrapper.innerHTML = '';
-            } else {
-                if (!fileInputWrapper.querySelector('input[type=file]')) {
-                    fileInputWrapper.innerHTML = '<input required class="form-control" type="file" id="welcome-image" name="file">';
-                }
-            }
-        }
-
-        toggleFileInput();
-
-        branchSelect.addEventListener('change', function() {
-            toggleFileInput();
-        });
-    });
 </script>
 @endsection

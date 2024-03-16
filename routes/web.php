@@ -32,6 +32,7 @@ Route::put('/check{reply}', [ReplyController::class, 'check'])->name('check');
 Route::get('/product-category', [CategoryController::class, 'catpro'])->name('catpro');
 Route::get('/product-category/{branch}/{category}', [CategoryController::class, 'showpro'])->name('product-category.show');
 Route::get('/product-punkt/{branch}/{tag}', [ProductController::class, 'showpunkt'])->name('product.showpunkt');
+Route::get('/product-create-in/{branch}/{tag}', [ProductController::class, 'productCreateIn'])->name('product.create.in');
 
 Route::get('/pricing', [DownloadController::class, 'price'])->name('price');
 Route::get('/downloads', [DownloadController::class, 'index'])->name('downloads');

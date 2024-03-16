@@ -1,16 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <div class="row p-0 mt-3">
-    @php
-        $theme = $products->first();
-    @endphp
-    @if (isset($theme) && !empty($theme))
-        <div class="my-3">
-            <h2 class="my-">{{ $theme->branch->name }}</h2>
-            <p>{{ $theme->tags->first()->name }}</p>
-        </div>
-    @endif
-    
+    <h2 class="my-">
+        {{ $branch->name }}
+        <a href="{{ route('product.create.in', ['branch' => $branch->id, 'tag' => $tag->id])}}" class="btn btn-primary mb-0">
+            + Add Product
+        </a> 
+    </h2>
+    <p>{{ $tag->name }}</p>
     @foreach ($products as $p)
     <div class="col-2 mb-4">
         <a href="{{ route('product.show', ['product' => $p->id]) }}" class="card in">

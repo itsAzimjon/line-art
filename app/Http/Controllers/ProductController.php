@@ -29,10 +29,10 @@ class ProductController extends Controller
         return view('components.left-side', compact('products'));
     }
     
-    public function showpunkt($branch, Tag $tag)
+    public function showpunkt(Branch $branch, Tag $tag)
     {
         $products = $tag->products()->where('branch_id', $branch)->get();
-        return view('product.showpunkt', compact('products', 'branch'));
+        return view('product.showpunkt', compact('products', 'branch', 'tag'));
     }
 
     public function create()
@@ -42,11 +42,17 @@ class ProductController extends Controller
         return view('product.create', compact(['tags', 'branches']));
     }
 
+    public function productCreateIn($branch, $tag)
+    {
+        $branches = Branch::where('id', '>', '2')->get();      
+        $tags = $branches->flatMap->categories->flatMap->tags->unique('id');  
+        return view('product.create-in', compact(['tags', 'branch', 'tag']));
+    }
+
     public function store(Request $request)
     {        
         $request->validate([
             'mult_image' => 'required|array|min:1',
-            'file' => 'required|file',
         ]);
 
         $mults = [];
@@ -63,7 +69,7 @@ class ProductController extends Controller
         $product = Product::create([
             'branch_id' => $request->branch_id,
             'photo' => json_encode($mults),
-            'file' => $file,
+            'file' => $file ?? null,
             'title' => $request->title,
             'author' => $request->author ?? null,
             'price' => $request->price,

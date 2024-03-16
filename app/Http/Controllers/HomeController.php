@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function forum()
     {
-        $categories = Category::where('type', 'like', '2')->get();
+        $categories = Category::where('type', 'like', '2')->orderBy('views', 'desc')->get();
         return view('forum', compact('categories'));
     }
 

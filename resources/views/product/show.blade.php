@@ -22,22 +22,25 @@
             {{-- <p>{{ $product->category->name }}</p>   --}}
         </div>
         <div class="user_btn d-flex">
-            <form action="{{ route('product.buy', ['product' => $product->id]) }}" method="post">
-                @csrf
-                <button type="submit" class="btn btn-page3 btn_skachat  position-relative">
-                    <svg class="btn_skachat_svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M7.75 2.1875V11.3906" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M3.39062 7.03125L7.75 11.3906L12.1094 7.03125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2.42188 13.3281H13.0781" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
-                        {{ $product->downloads->count() }}
-                        <span class="visually-hidden">unread messages</span>
-                    </span>
-                    Скачать
-                </button>
-                
-            </form>
+            @if ($product->branch->id !== 3)
+                <form action="{{ route('product.buy', ['product' => $product->id]) }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-page3 btn_skachat  position-relative">
+                        <svg class="btn_skachat_svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M7.75 2.1875V11.3906" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.39062 7.03125L7.75 11.3906L12.1094 7.03125" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.42188 13.3281H13.0781" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+                            {{ $product->downloads->count() }}
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                        Скачать
+                    </button>
+                    
+                </form>
+            @endif
+            
             <form action="{{ route('product.like', ['product' => $product->id]) }}" method="post">
                 @csrf
                 @php $userHasRated = false; @endphp

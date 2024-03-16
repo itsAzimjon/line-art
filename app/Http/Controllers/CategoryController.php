@@ -10,6 +10,11 @@ class CategoryController extends Controller
 {
     public function showpro($branch, Category $category)
     {
+        $views = $category->views;
+        $views++;
+        $category->update([
+            'views' => $views
+        ]);
         return view('category.showpro', compact('branch', 'category'));
     }
 
@@ -36,6 +41,11 @@ class CategoryController extends Controller
 
     public function show(Category $category)
     {
+        $views = $category->views;
+        $views++;
+        $category->update([
+            'views' => $views
+        ]);
         return view('category.show', compact('category'));
     }
 

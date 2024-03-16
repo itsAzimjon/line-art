@@ -5,7 +5,7 @@
     <div class="col col-7 cls_p3">
         <h2 class="mb-4 fw-semibold">{{ $category->name }}</h2>
         <div class="cls_card">
-            @foreach ($category->tags as $tag)
+            @foreach ($category->tags->sortByDesc('views') as $tag)
             <form action="{{ route('product.showpunkt', ['tag' => $tag->id, 'branch' => $branch])}}" >
                 <button class="btn text-start col-12 m-0">
                     <div class="cls_cards p-3">
