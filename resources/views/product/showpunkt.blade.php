@@ -1,11 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <div class="row p-0 mt-3">
+    
     <h2 class="my-">
         {{ $branch->name }}
-        <a href="{{ route('product.create.in', ['branch' => $branch->id, 'tag' => $tag->id])}}" class="btn btn-primary mb-0">
-            + Add Product
-        </a> 
+        @can('content-editor')   
+            <a href="{{ route('product.create.in', ['branch' => $branch->id, 'tag' => $tag->id])}}" class="btn btn-primary mb-0">
+                + Add Product
+            </a> 
+        @endcan   
     </h2>
     <p>{{ $tag->name }}</p>
     @foreach ($products as $p)

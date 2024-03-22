@@ -20,7 +20,7 @@ class ProductController extends Controller
                 return $next($request);
             }
             abort(403, 'Unauthorized action.');
-        })->only(['edit', 'store', 'update', 'create', 'destroy']);
+        })->only(['edit', 'store', 'update', 'create', 'productCreateIn', 'destroy']);
     }
     
     public function forumcomp()
