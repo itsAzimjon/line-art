@@ -31,7 +31,7 @@ class ProductController extends Controller
     
     public function showpunkt(Branch $branch, Tag $tag)
     {
-        $products = $tag->products()->where('branch_id', $branch)->get();
+        $products = $tag->products()->where('branch_id', $branch->id)->get();
         return view('product.showpunkt', compact('products', 'branch', 'tag'));
     }
 

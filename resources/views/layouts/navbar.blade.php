@@ -26,7 +26,7 @@
             </li>
             <li class="li_1">
                 <a class="{{ (Route::currentRouteName() == 'price' ? 'active' : '') }}" href="{{ route('price') }}">
-                    price
+                    Цена
                 </a>
             </li>
         </ul>
